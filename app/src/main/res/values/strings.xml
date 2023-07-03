@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">plancton</string>
+
+    <string name="null_binding">Cannot access binding because it is null. Is the view visible?</string>
+    <string name="enter_full_name">Enter full name</string>
+    <string name="enter_password">Enter password</string>
+    <string name="login">LOGIN</string>
+
+    <string name="error_unknown">Something wrong, we will fix it soon</string>
 </resources>
