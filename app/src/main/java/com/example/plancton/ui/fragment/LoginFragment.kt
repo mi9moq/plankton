@@ -75,10 +75,10 @@ class LoginFragment : Fragment() {
 
     private fun getAuth(): Auth =
         with(binding) {
-            val fullName = etFullName.text.toString()
+            val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            return Auth(fullName, password)
+            return Auth(email, password)
         }
 
     private fun initObservers() {
@@ -100,7 +100,7 @@ class LoginFragment : Fragment() {
             tvError.isVisible = false
             progressBar.isVisible = true
 
-            tilFullName.isVisible = false
+            tilEmail.isVisible = false
             tilPassword.isVisible = false
             bLogin.isVisible = false
         }
@@ -119,7 +119,7 @@ class LoginFragment : Fragment() {
             tvError.isVisible = true
             progressBar.isVisible = false
 
-            tilFullName.isVisible = false
+            tilEmail.isVisible = false
             tilPassword.isVisible = false
             bLogin.isVisible = false
         }

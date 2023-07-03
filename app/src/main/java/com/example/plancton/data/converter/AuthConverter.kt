@@ -8,7 +8,7 @@ class AuthConverter @Inject constructor() {
 
     fun convert(from: Auth): AuthModel =
         AuthModel(
-            fullName = from.fullName,
+            email = from.email,
             password = from.password
         )
 }
