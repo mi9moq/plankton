@@ -1,9 +1,11 @@
 package com.example.plancton.domain.entity
 
+import java.net.URL
+
 data class Section(
     val title: String,
-    val isPublic: Boolean,
-    val url: String,
-    val user: User,
-    val access: Access
+    var isPublic: Boolean = false,
+    var url: URL? = null,
+    val owner: User,
+    var accessType: AccessType = AccessType.Editor,
 )

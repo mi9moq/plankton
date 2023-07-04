@@ -1,6 +1,9 @@
 package com.example.plancton.domain.entity
 
-data class User(
+import java.util.UUID
+
+data class User (
     val fullName: String,
-    val email: String
+    val email: String,
+    val id: UUID
 )

@@ -2,12 +2,12 @@ package com.example.plancton.domain.entity
 
 import java.sql.Time
 import java.util.Date
+import java.util.UUID
 
-data class Event(
+data class UserEvent(
     val date: Date,
     val time: Time,
     val description: String,
-    val eventGroupId: String,
-    val section: Section,
-    val user: User
+    var eventGroupId: String? = null,
+    var id: UUID? = null
 )
