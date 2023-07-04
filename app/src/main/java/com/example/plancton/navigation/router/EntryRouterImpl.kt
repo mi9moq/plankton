@@ -1,8 +1,7 @@
-package com.example.plancton.navigation
+package com.example.plancton.navigation.router
 
-import com.example.plancton.presentation.router.EntryRouter
-import com.example.plancton.presentation.screen.getLoginScreen
-import com.example.plancton.presentation.screen.getRegistrationScreen
+import com.example.plancton.navigation.screen.getLoginScreen
+import com.example.plancton.navigation.screen.getRegistrationScreen
 import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
 

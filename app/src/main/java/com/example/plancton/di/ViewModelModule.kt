@@ -16,6 +16,7 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(EventViewModel::class)
     fun bindEventViewModel(impl: EventViewModel): ViewModel
+
     @ViewModelKey(LoginViewModel::class)
     fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
 

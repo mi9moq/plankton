@@ -1,4 +1,4 @@
-package com.example.plancton.presentation.router
+package com.example.plancton.navigation.router
 
 interface EntryRouter {
 

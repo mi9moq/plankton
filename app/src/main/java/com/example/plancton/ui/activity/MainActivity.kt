@@ -11,6 +11,10 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    val component by lazy {
+        (application as PlanctonApp).component
+    }
+
     @Inject
     lateinit var router: Router
 
@@ -20,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private val navigator = AppNavigator(this, R.id.fragment_container)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as PlanctonApp).component.inject(this)
+        component.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }

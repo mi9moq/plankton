@@ -12,9 +12,10 @@ import dagger.Component
 
 @Component(
     modules = [
-        DataModule::class,
+        RepositoryModule::class,
         ViewModelModule::class,
         NavigationModule::class,
+        DataSourceModule::class
     ]
 )
 @AppScope
@@ -24,7 +25,6 @@ interface AppComponent {
 
     fun inject(activity: MainActivity)
 
-
     fun inject(fragment: EventFragment)
 
     fun inject(fragment: LoginFragment)
@@ -32,7 +32,6 @@ interface AppComponent {
     fun inject(fragment: RegistrationFragment)
 
     fun inject(fragment: EntryFragment)
-
 
     @Component.Factory
     interface Factory {

@@ -1,7 +1,7 @@
 package com.example.plancton.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.plancton.presentation.router.EntryRouter
+import com.example.plancton.navigation.router.EntryRouter
 import javax.inject.Inject
 
 class EntryViewModel @Inject constructor(
