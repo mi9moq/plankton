@@ -51,9 +51,15 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
-    def lifecycle_version = "2.5.1"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-
     implementation "androidx.fragment:fragment:1.6.0"
+    //Lifecycle
+    def extensions_version = "2.2.0"
+    def ktx_version = "2.6.1"
+    implementation "androidx.lifecycle:lifecycle-extensions:$extensions_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$ktx_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$ktx_version"
+
+    //Navigation
+    def cicerone_version = "7.1"
+    implementation "com.github.terrakok:cicerone:$cicerone_version"
 }
