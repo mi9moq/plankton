@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.plancton.PlanctonApp
 import com.example.plancton.ui.activity.MainActivity
 import com.example.plancton.ui.fragment.LoginFragment
+import com.example.plancton.ui.fragment.RegistrationFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -21,6 +22,8 @@ interface AppComponent {
     fun inject(activity: MainActivity)
 
     fun inject(fragment: LoginFragment)
+
+    fun inject(fragment: RegistrationFragment)
 
     @Component.Factory
     interface Factory {

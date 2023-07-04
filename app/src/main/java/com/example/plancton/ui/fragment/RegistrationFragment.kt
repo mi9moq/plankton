@@ -10,21 +10,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.PlanctonApp
 import com.example.plancton.R
-import com.example.plancton.databinding.FragmentLoginBinding
-import com.example.plancton.domain.entity.Auth
+import com.example.plancton.databinding.FragmentRegistrationBinding
 import com.example.plancton.domain.entity.ErrorType
-import com.example.plancton.domain.entity.ErrorType.UNKNOWN
-import com.example.plancton.presentation.state.LoginState
-import com.example.plancton.presentation.state.LoginState.Error
-import com.example.plancton.presentation.state.LoginState.Initial
-import com.example.plancton.presentation.state.LoginState.Loading
-import com.example.plancton.presentation.viewmodel.LoginViewModel
+import com.example.plancton.domain.entity.RegistrationRequest
+import com.example.plancton.presentation.state.RegistrationState
+import com.example.plancton.presentation.state.RegistrationState.Error
+import com.example.plancton.presentation.state.RegistrationState.Initial
+import com.example.plancton.presentation.state.RegistrationState.Loading
+import com.example.plancton.presentation.viewmodel.RegistrationViewModel
 import com.example.plancton.presentation.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+class RegistrationFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding: FragmentRegistrationBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
             getString(R.string.null_binding)
@@ -34,7 +33,7 @@ class LoginFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[RegistrationViewModel::class.java]
     }
 
     private val component by lazy {
@@ -51,7 +50,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -65,27 +64,28 @@ class LoginFragment : Fragment() {
 
     private fun initListeners() {
         with(binding) {
-            bSignIn.setOnClickListener {
-                val auth = getAuth()
+            bSignUp.setOnClickListener {
+                val registrationRequest = getRegistrationRequest()
 
-                viewModel.login(auth)
+                viewModel.register(registrationRequest)
             }
         }
     }
 
-    private fun getAuth(): Auth =
+    private fun getRegistrationRequest(): RegistrationRequest =
         with(binding) {
+            val fullName = etFullName.text.toString()
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
 
-            return Auth(email, password)
+            return RegistrationRequest(email, fullName, password)
         }
 
     private fun initObservers() {
         viewModel.state.observe(viewLifecycleOwner, ::applyState)
     }
 
-    private fun applyState(state: LoginState) {
+    private fun applyState(state: RegistrationState) {
         when (state) {
             Initial -> Unit
 
@@ -100,9 +100,10 @@ class LoginFragment : Fragment() {
             tvError.isVisible = false
             progressBar.isVisible = true
 
+            tilFullName.isVisible = false
             tilEmail.isVisible = false
             tilPassword.isVisible = false
-            bSignIn.isVisible = false
+            bSignUp.isVisible = false
         }
     }
 
@@ -110,7 +111,7 @@ class LoginFragment : Fragment() {
         setErrorVisibility()
 
         when (errorType) {
-            UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
+            ErrorType.UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
         }
     }
 
@@ -119,9 +120,10 @@ class LoginFragment : Fragment() {
             tvError.isVisible = true
             progressBar.isVisible = false
 
+            tilFullName.isVisible = false
             tilEmail.isVisible = false
             tilPassword.isVisible = false
-            bSignIn.isVisible = false
+            bSignUp.isVisible = false
         }
     }
 
