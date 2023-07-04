@@ -65,7 +65,7 @@ class LoginFragment : Fragment() {
 
     private fun initListeners() {
         with(binding) {
-            bLogin.setOnClickListener {
+            bSignIn.setOnClickListener {
                 val auth = getAuth()
 
                 viewModel.login(auth)
@@ -102,7 +102,7 @@ class LoginFragment : Fragment() {
 
             tilEmail.isVisible = false
             tilPassword.isVisible = false
-            bLogin.isVisible = false
+            bSignIn.isVisible = false
         }
     }
 
@@ -121,7 +121,7 @@ class LoginFragment : Fragment() {
 
             tilEmail.isVisible = false
             tilPassword.isVisible = false
-            bLogin.isVisible = false
+            bSignIn.isVisible = false
         }
     }
 
