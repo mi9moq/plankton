@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">plancton</string>
-
+    <string name="pick_date">pick a date</string>
+    <string name="pick_time">pick a time</string>
     <string name="null_binding">Cannot access binding because it is null. Is the view visible?</string>
     <string name="enter_full_name">Enter full name</string>
     <string name="enter_email">Enter email</string>
     <string name="enter_password">Enter password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
-
     <string name="error_unknown">Something wrong, we will fix it soon</string>
 </resources>

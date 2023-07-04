@@ -51,6 +51,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
+    implementation "androidx.fragment:fragment:1.6.0"
     //Lifecycle
     def extensions_version = "2.2.0"
     def ktx_version = "2.6.1"
