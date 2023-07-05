@@ -6,6 +6,7 @@ import com.example.plancton.ui.activity.MainActivity
 import com.example.plancton.ui.fragment.EventFragment
 import com.example.plancton.ui.fragment.EntryFragment
 import com.example.plancton.ui.fragment.LoginFragment
+import com.example.plancton.ui.fragment.MainFragment
 import com.example.plancton.ui.fragment.RegistrationFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -32,6 +33,8 @@ interface AppComponent {
     fun inject(fragment: RegistrationFragment)
 
     fun inject(fragment: EntryFragment)
+
+    fun inject(fragment: MainFragment)
 
     @Component.Factory
     interface Factory {
