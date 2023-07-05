@@ -1,4 +1,4 @@
-package com.example.plancton.presentation.state
+package com.example.plancton.presentation.registration
 
 import com.example.plancton.domain.entity.ErrorType
 

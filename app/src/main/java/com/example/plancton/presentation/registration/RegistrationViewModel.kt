@@ -1,4 +1,4 @@
-package com.example.plancton.presentation.viewmodel
+package com.example.plancton.presentation.registration
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,10 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.plancton.domain.entity.ErrorType.UNKNOWN
 import com.example.plancton.domain.entity.RegistrationRequest
 import com.example.plancton.domain.usecase.RegisterUseCase
-import com.example.plancton.presentation.state.RegistrationState
-import com.example.plancton.presentation.state.RegistrationState.Error
-import com.example.plancton.presentation.state.RegistrationState.Initial
-import com.example.plancton.presentation.state.RegistrationState.Loading
+import com.example.plancton.presentation.registration.RegistrationState.Error
+import com.example.plancton.presentation.registration.RegistrationState.Initial
+import com.example.plancton.presentation.registration.RegistrationState.Loading
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

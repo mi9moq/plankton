@@ -13,21 +13,19 @@ import com.example.plancton.R
 import com.example.plancton.databinding.FragmentRegistrationBinding
 import com.example.plancton.domain.entity.ErrorType
 import com.example.plancton.domain.entity.RegistrationRequest
-import com.example.plancton.presentation.state.RegistrationState
-import com.example.plancton.presentation.state.RegistrationState.Error
-import com.example.plancton.presentation.state.RegistrationState.Initial
-import com.example.plancton.presentation.state.RegistrationState.Loading
-import com.example.plancton.presentation.viewmodel.RegistrationViewModel
-import com.example.plancton.presentation.viewmodel.ViewModelFactory
+import com.example.plancton.presentation.ViewModelFactory
+import com.example.plancton.presentation.registration.RegistrationState
+import com.example.plancton.presentation.registration.RegistrationState.Error
+import com.example.plancton.presentation.registration.RegistrationState.Initial
+import com.example.plancton.presentation.registration.RegistrationState.Loading
+import com.example.plancton.presentation.registration.RegistrationViewModel
 import javax.inject.Inject
 
 class RegistrationFragment : Fragment() {
 
     private var _binding: FragmentRegistrationBinding? = null
     private val binding
-        get() = checkNotNull(_binding) {
-            getString(R.string.null_binding)
-        }
+        get() = _binding!!
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory

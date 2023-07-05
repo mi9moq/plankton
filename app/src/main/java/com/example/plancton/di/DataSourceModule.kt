@@ -14,7 +14,7 @@ interface DataSourceModule {
     @AppScope
     fun bindEventRemoteDataSource(impl: EventRemoteDataSourceImpl): EventRemoteDataSource
 
-    @AppScope
     @Binds
+    @AppScope
     fun bindAuthRemoteDataSource(impl: AuthRemoteDataSourceImpl): AuthRemoteDataSource
 }
