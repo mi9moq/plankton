@@ -94,32 +94,27 @@ class LoginFragment : Fragment() {
     }
 
     private fun applyLoadingState() {
+
         with(binding) {
+            contentContainer.isVisible = false
+
             tvError.isVisible = false
             progressBar.isVisible = true
-
-            tilEmail.isVisible = false
-            tilPassword.isVisible = false
-            bSignIn.isVisible = false
         }
     }
 
     private fun applyErrorState(errorType: ErrorType) {
-        setErrorVisibility()
+
+        //TODO убрать фокус с полей ввода на всех фрагментах где они есть при переходе между стейтами
+        with(binding) {
+            contentContainer.isVisible = false
+
+            tvError.isVisible = true
+            progressBar.isVisible = false
+        }
 
         when (errorType) {
             UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
-        }
-    }
-
-    private fun setErrorVisibility() {
-        with(binding) {
-            tvError.isVisible = true
-            progressBar.isVisible = false
-
-            tilEmail.isVisible = false
-            tilPassword.isVisible = false
-            bSignIn.isVisible = false
         }
     }
 
