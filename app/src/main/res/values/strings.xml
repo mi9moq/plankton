@@ -9,4 +9,13 @@
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
     <string name="error_unknown">Something wrong, we will fix it soon</string>
+    <string name="choose_replay_type">Choose replay type</string>
+    <string name="single">SINGLE</string>
+    <string name="daily">DAILY</string>
+    <string name="weekly">WEEKLY</string>
+    <string name="monthly">MONTHLY</string>
+    <string name="yearly">YEARLY</string>
+    <string name="custom">CUSTOM</string>
+    <string name="apply">APPLY</string>
+    <string name="create">Create</string>
 </resources>
