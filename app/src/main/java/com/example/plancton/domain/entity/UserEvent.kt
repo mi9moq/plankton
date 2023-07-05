@@ -9,5 +9,6 @@ data class UserEvent(
     val time: Time,
     val description: String,
     var eventGroupId: String? = null,
-    var id: UUID? = null
+    var id: UUID? = null,
+    var replay: ReplayType? = null,
 )
