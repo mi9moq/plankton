@@ -8,4 +8,6 @@ interface EventRepository {
     suspend fun create(userEvent: UserEvent)
 
     suspend fun getEvents(startDate: Date, endDate: Date): List<UserEvent>
+
+    suspend fun deleteEvent(event: UserEvent)
 }

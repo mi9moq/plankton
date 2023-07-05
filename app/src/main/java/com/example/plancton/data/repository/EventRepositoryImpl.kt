@@ -16,4 +16,8 @@ class EventRepositoryImpl @Inject constructor(
 
     override suspend fun getEvents(startDate: Date, endDate: Date): List<UserEvent> =
         eventRemoteDataSource.getEvents(startDate, endDate)
+
+    override suspend fun deleteEvent(event: UserEvent) {
+        eventRemoteDataSource.deleteEvent(event)
+    }
 }
