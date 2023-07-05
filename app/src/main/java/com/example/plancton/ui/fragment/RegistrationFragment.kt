@@ -95,33 +95,23 @@ class RegistrationFragment : Fragment() {
 
     private fun applyLoadingState() {
         with(binding) {
+            contentContainer.isVisible = false
+
             tvError.isVisible = false
             progressBar.isVisible = true
-
-            tilFullName.isVisible = false
-            tilEmail.isVisible = false
-            tilPassword.isVisible = false
-            bSignUp.isVisible = false
         }
     }
 
     private fun applyErrorState(errorType: ErrorType) {
-        setErrorVisibility()
+        with(binding) {
+            contentContainer.isVisible = false
+
+            tvError.isVisible = true
+            progressBar.isVisible = false
+        }
 
         when (errorType) {
             ErrorType.UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
-        }
-    }
-
-    private fun setErrorVisibility() {
-        with(binding) {
-            tvError.isVisible = true
-            progressBar.isVisible = false
-
-            tilFullName.isVisible = false
-            tilEmail.isVisible = false
-            tilPassword.isVisible = false
-            bSignUp.isVisible = false
         }
     }
 
