@@ -11,5 +11,5 @@ data class UserEventDto(
     val description: String,
     var eventGroupId: String? = null,
     var id: UUID? = null,
-    var replay: ReplayType?,
+    var replay: ReplayType? = null,
 )

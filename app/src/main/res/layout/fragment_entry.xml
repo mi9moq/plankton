@@ -5,14 +5,14 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_20"
         android:text="@string/sign_in" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/b_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
