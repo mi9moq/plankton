@@ -5,14 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.plancton.R
 import com.example.plancton.databinding.FragmentCreateBinding
+import com.example.plancton.domain.entity.ReplayType
 import com.example.plancton.domain.entity.UserEvent
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.event.EventState
-import com.example.plancton.presentation.event.EventState.*
+import com.example.plancton.presentation.event.EventState.Content
+import com.example.plancton.presentation.event.EventState.Error
+import com.example.plancton.presentation.event.EventState.Initial
+import com.example.plancton.presentation.event.EventState.Loading
 import com.example.plancton.presentation.event.EventViewModel
 import com.example.plancton.ui.activity.MainActivity
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -60,7 +65,7 @@ class EventFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentCreateBinding.inflate(inflater, container, false)
         return binding.root
@@ -91,6 +96,7 @@ class EventFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner, ::applyState)
         viewModel.date.observe(viewLifecycleOwner, ::setDate)
         viewModel.time.observe(viewLifecycleOwner, ::setTime)
+        viewModel.replayTypes.observe(viewLifecycleOwner, ::setupReplayTypes)
     }
 
     private fun applyState(state: EventState) {
@@ -124,15 +130,20 @@ class EventFragment : Fragment() {
         }
     }
 
+    private fun setupReplayTypes(replayTypes: List<ReplayType>) {
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, replayTypes)
+        binding.dropdownMenu.adapter = arrayAdapter
+    }
+
     private fun applyLoadingState() {
-        with(binding){
+        with(binding) {
             contentContainer.visibility = View.GONE
             progressBar.visibility = View.VISIBLE
         }
     }
 
     private fun applyContentSate(event: UserEvent) {
-        with(binding){
+        with(binding) {
             contentContainer.visibility = View.VISIBLE
             progressBar.visibility = View.GONE
         }
@@ -172,7 +183,13 @@ class EventFragment : Fragment() {
         } else {
             val eventDate = chosenDate!!
             val eventTime = chosenTime!!
-            viewModel.create(eventDate, eventTime, binding.etDescription.text.toString())
+            val replayType = binding.dropdownMenu.selectedItem.toString()
+            viewModel.create(
+                eventDate,
+                eventTime,
+                binding.etDescription.text.toString(),
+                replayType
+            )
         }
     }
 
