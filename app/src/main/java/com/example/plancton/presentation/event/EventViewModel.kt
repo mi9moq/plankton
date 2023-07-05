@@ -7,8 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.plancton.domain.entity.ReplayType
 import com.example.plancton.domain.entity.UserEvent
 import com.example.plancton.domain.usecase.CreateEventUseCase
+import com.example.plancton.navigation.router.EventRouter
 import com.example.plancton.presentation.event.EventState.Initial
 import com.example.plancton.presentation.event.EventState.Loading
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.sql.Time
 import java.util.Calendar
@@ -17,7 +19,8 @@ import java.util.TimeZone
 import javax.inject.Inject
 
 class EventViewModel @Inject constructor(
-    private val createEventUseCase: CreateEventUseCase
+    private val createEventUseCase: CreateEventUseCase,
+    private val router: EventRouter,
 ) : ViewModel() {
 
     private val _state: MutableLiveData<EventState> = MutableLiveData(Initial)
@@ -54,8 +57,9 @@ class EventViewModel @Inject constructor(
         //TODO добавить handler
         viewModelScope.launch {
             _state.value = Loading
+            delay(2500)
             createEventUseCase(userEvent)
-            //TODO добавить сообщение об успехе
+            router.back()
         }
     }
 }
