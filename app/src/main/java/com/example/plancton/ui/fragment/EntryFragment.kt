@@ -8,19 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.PlanctonApp
-import com.example.plancton.R
 import com.example.plancton.databinding.FragmentEntryBinding
-import com.example.plancton.presentation.viewmodel.EntryViewModel
-import com.example.plancton.presentation.viewmodel.ViewModelFactory
+import com.example.plancton.presentation.ViewModelFactory
+import com.example.plancton.presentation.entry.EntryViewModel
 import javax.inject.Inject
 
 class EntryFragment : Fragment() {
 
     private var _binding: FragmentEntryBinding? = null
     private val binding
-        get() = checkNotNull(_binding) {
-            getString(R.string.null_binding)
-        }
+        get() = _binding!!
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory

@@ -1,4 +1,4 @@
-package com.example.plancton.presentation.viewmodel
+package com.example.plancton.presentation.login
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,8 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.plancton.domain.entity.Auth
 import com.example.plancton.domain.entity.ErrorType.UNKNOWN
 import com.example.plancton.domain.usecase.LoginUseCase
-import com.example.plancton.presentation.state.LoginState
-import com.example.plancton.presentation.state.LoginState.*
+import com.example.plancton.presentation.login.LoginState.*
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

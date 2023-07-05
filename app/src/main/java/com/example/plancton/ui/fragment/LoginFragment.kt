@@ -14,21 +14,19 @@ import com.example.plancton.databinding.FragmentLoginBinding
 import com.example.plancton.domain.entity.Auth
 import com.example.plancton.domain.entity.ErrorType
 import com.example.plancton.domain.entity.ErrorType.UNKNOWN
-import com.example.plancton.presentation.state.LoginState
-import com.example.plancton.presentation.state.LoginState.Error
-import com.example.plancton.presentation.state.LoginState.Initial
-import com.example.plancton.presentation.state.LoginState.Loading
-import com.example.plancton.presentation.viewmodel.LoginViewModel
-import com.example.plancton.presentation.viewmodel.ViewModelFactory
+import com.example.plancton.presentation.ViewModelFactory
+import com.example.plancton.presentation.login.LoginState
+import com.example.plancton.presentation.login.LoginState.Error
+import com.example.plancton.presentation.login.LoginState.Initial
+import com.example.plancton.presentation.login.LoginState.Loading
+import com.example.plancton.presentation.login.LoginViewModel
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding
-        get() = checkNotNull(_binding) {
-            getString(R.string.null_binding)
-        }
+        get() = _binding!!
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory

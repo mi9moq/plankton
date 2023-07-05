@@ -1,10 +1,10 @@
 package com.example.plancton.di
 
 import androidx.lifecycle.ViewModel
+import com.example.plancton.presentation.entry.EntryViewModel
 import com.example.plancton.presentation.event.EventViewModel
-import com.example.plancton.presentation.viewmodel.EntryViewModel
-import com.example.plancton.presentation.viewmodel.LoginViewModel
-import com.example.plancton.presentation.viewmodel.RegistrationViewModel
+import com.example.plancton.presentation.login.LoginViewModel
+import com.example.plancton.presentation.registration.RegistrationViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -17,6 +17,8 @@ interface ViewModelModule {
     @ViewModelKey(EventViewModel::class)
     fun bindEventViewModel(impl: EventViewModel): ViewModel
 
+    @Binds
+    @IntoMap
     @ViewModelKey(LoginViewModel::class)
     fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
 

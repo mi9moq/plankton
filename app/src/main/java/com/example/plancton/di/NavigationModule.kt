@@ -1,7 +1,7 @@
 package com.example.plancton.di
 
-import com.example.plancton.navigation.router.EntryRouterImpl
 import com.example.plancton.navigation.router.EntryRouter
+import com.example.plancton.navigation.router.EntryRouterImpl
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -24,7 +24,7 @@ interface NavigationModule {
         fun provideNavigatorHolder(): NavigatorHolder = cicerone.getNavigatorHolder()
     }
 
-    @AppScope
     @Binds
+    @AppScope
     fun bindEntryRouter(impl: EntryRouterImpl): EntryRouter
 }
