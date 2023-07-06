@@ -43,6 +43,8 @@ class LoginViewModel @Inject constructor(
                     400 -> _state.value = Error(HTTP400)
 
                     401 -> _state.value = Error(HTTP401)
+
+                    else -> _state.value = Error(UNKNOWN)
                 }
             }
 
