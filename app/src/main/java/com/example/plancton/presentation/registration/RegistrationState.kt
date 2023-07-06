@@ -1,6 +1,6 @@
 package com.example.plancton.presentation.registration
 
-import com.example.plancton.domain.entity.ErrorType
+import com.example.plancton.domain.entity.AuthErrorType
 
 sealed interface RegistrationState {
 
@@ -8,5 +8,5 @@ sealed interface RegistrationState {
 
     object Loading : RegistrationState
 
-    data class Error(val errorType: ErrorType) : RegistrationState
+    data class Error(val authErrorType: AuthErrorType) : RegistrationState
 }

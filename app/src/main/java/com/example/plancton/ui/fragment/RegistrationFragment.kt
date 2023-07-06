@@ -1,6 +1,8 @@
 package com.example.plancton.ui.fragment
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.PlanctonApp
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentRegistrationBinding
-import com.example.plancton.domain.entity.ErrorType
+import com.example.plancton.domain.entity.AuthErrorType
+import com.example.plancton.domain.entity.AuthErrorType.HTTP400
+import com.example.plancton.domain.entity.AuthErrorType.HTTP401
+import com.example.plancton.domain.entity.AuthErrorType.INTERNET
+import com.example.plancton.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.domain.entity.RegistrationRequest
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.registration.RegistrationState
@@ -89,29 +95,55 @@ class RegistrationFragment : Fragment() {
 
             is Loading -> applyLoadingState()
 
-            is Error -> applyErrorState(state.errorType)
+            is Error -> applyErrorState(state.authErrorType)
         }
     }
 
     private fun applyLoadingState() {
         with(binding) {
             contentContainer.isVisible = false
-
             tvError.isVisible = false
             progressBar.isVisible = true
         }
     }
 
-    private fun applyErrorState(errorType: ErrorType) {
+    private fun applyErrorState(authErrorType: AuthErrorType) {
         with(binding) {
-            contentContainer.isVisible = false
-
+            contentContainer.isVisible = true
             tvError.isVisible = true
+            tvError.setTextColor(ColorStateList.valueOf(Color.RED))
             progressBar.isVisible = false
         }
 
-        when (errorType) {
-            ErrorType.UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
+        when (authErrorType) {
+            INTERNET -> showInternetError()
+
+            //TODO другие названия функций для 400
+            HTTP400 -> showEnteredDataError()
+
+            UNKNOWN -> showUnknownError()
+
+            HTTP401 -> Unit //Не приходит с бэка
+        }
+    }
+
+    private fun showInternetError() {
+        with(binding) {
+            //TODO добавить картинку
+            //TODO добавить анимации
+            tvError.text = getString(R.string.error_internet)
+        }
+    }
+
+    private fun showEnteredDataError() {
+        with(binding) {
+            tvError.text = getString(R.string.error_entered_data)
+        }
+    }
+
+    private fun showUnknownError() {
+        with(binding) {
+            tvError.text = getString(R.string.error_unknown)
         }
     }
 

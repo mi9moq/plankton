@@ -1,6 +1,8 @@
 package com.example.plancton.ui.fragment
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +14,11 @@ import com.example.plancton.PlanctonApp
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentLoginBinding
 import com.example.plancton.domain.entity.Auth
-import com.example.plancton.domain.entity.ErrorType
-import com.example.plancton.domain.entity.ErrorType.UNKNOWN
+import com.example.plancton.domain.entity.AuthErrorType
+import com.example.plancton.domain.entity.AuthErrorType.HTTP400
+import com.example.plancton.domain.entity.AuthErrorType.HTTP401
+import com.example.plancton.domain.entity.AuthErrorType.INTERNET
+import com.example.plancton.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.login.LoginState
 import com.example.plancton.presentation.login.LoginState.Error
@@ -89,7 +94,7 @@ class LoginFragment : Fragment() {
 
             is Loading -> applyLoadingState()
 
-            is Error -> applyErrorState(state.errorType)
+            is Error -> applyErrorState(state.authErrorType)
         }
     }
 
@@ -97,24 +102,56 @@ class LoginFragment : Fragment() {
 
         with(binding) {
             contentContainer.isVisible = false
-
             tvError.isVisible = false
             progressBar.isVisible = true
         }
     }
 
-    private fun applyErrorState(errorType: ErrorType) {
+    private fun applyErrorState(authErrorType: AuthErrorType) {
 
         //TODO убрать фокус с полей ввода на всех фрагментах где они есть при переходе между стейтами
         with(binding) {
-            contentContainer.isVisible = false
-
+            contentContainer.isVisible = true
             tvError.isVisible = true
+            tvError.setTextColor(ColorStateList.valueOf(Color.RED))
             progressBar.isVisible = false
         }
 
-        when (errorType) {
-            UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
+        when (authErrorType) {
+            INTERNET -> showInternetError()
+
+            //TODO другие названия функций для 400 и 401
+            HTTP400 -> showEnteredDataError()
+
+            HTTP401 -> showInvalidDataError()
+
+            UNKNOWN -> showUnknownError()
+        }
+    }
+
+    private fun showInternetError() {
+        with(binding) {
+            //TODO добавить картинку
+            //TODO добавить анимации
+            tvError.text = getString(R.string.error_internet)
+        }
+    }
+
+    private fun showEnteredDataError() {
+        with(binding) {
+            tvError.text = getString(R.string.error_entered_data)
+        }
+    }
+
+    private fun showInvalidDataError() {
+        with(binding) {
+            tvError.text = getString(R.string.error_invalid_data)
+        }
+    }
+
+    private fun showUnknownError() {
+        with(binding) {
+            tvError.text = getString(R.string.error_unknown)
         }
     }
 
