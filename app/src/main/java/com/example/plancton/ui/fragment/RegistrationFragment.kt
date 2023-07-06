@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.PlanctonApp
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentRegistrationBinding
-import com.example.plancton.domain.entity.ErrorType
+import com.example.plancton.domain.entity.AuthErrorType
 import com.example.plancton.domain.entity.RegistrationRequest
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.registration.RegistrationState
@@ -89,7 +89,7 @@ class RegistrationFragment : Fragment() {
 
             is Loading -> applyLoadingState()
 
-            is Error -> applyErrorState(state.errorType)
+            is Error -> applyErrorState(state.authErrorType)
         }
     }
 
@@ -102,7 +102,7 @@ class RegistrationFragment : Fragment() {
         }
     }
 
-    private fun applyErrorState(errorType: ErrorType) {
+    private fun applyErrorState(authErrorType: AuthErrorType) {
         with(binding) {
             contentContainer.isVisible = false
 
@@ -110,8 +110,9 @@ class RegistrationFragment : Fragment() {
             progressBar.isVisible = false
         }
 
-        when (errorType) {
-            ErrorType.UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
+        when (authErrorType) {
+            AuthErrorType.UNKNOWN -> binding.tvError.text = getString(R.string.error_unknown)
+            else -> Unit
         }
     }
 

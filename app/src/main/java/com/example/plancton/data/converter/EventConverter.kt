@@ -11,8 +11,7 @@ class EventConverter @Inject constructor() {
         time = from.time,
         description = from.description,
         eventGroupId = from.eventGroupId,
-        id = from.id
-        replay = from.replay
+        id = from.id,
         replay = from.replay,
     )
 
