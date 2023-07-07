@@ -1,10 +1,10 @@
 package com.example.plancton.di
 
-import android.app.Application
+import android.content.Context
 import com.example.plancton.PlanctonApp
 import com.example.plancton.ui.activity.MainActivity
-import com.example.plancton.ui.fragment.EventFragment
 import com.example.plancton.ui.fragment.EntryFragment
+import com.example.plancton.ui.fragment.EventFragment
 import com.example.plancton.ui.fragment.LoginFragment
 import com.example.plancton.ui.fragment.MainFragment
 import com.example.plancton.ui.fragment.RegistrationFragment
@@ -39,7 +39,7 @@ interface AppComponent {
     @Component.Factory
     interface Factory {
         fun create(
-            @BindsInstance application: Application,
+            @BindsInstance context: Context,
         ): AppComponent
     }
 }

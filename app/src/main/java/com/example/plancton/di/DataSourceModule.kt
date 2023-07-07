@@ -4,6 +4,8 @@ import com.example.plancton.data.datasource.AuthRemoteDataSource
 import com.example.plancton.data.datasource.AuthRemoteDataSourceImpl
 import com.example.plancton.data.datasource.EventRemoteDataSource
 import com.example.plancton.data.datasource.EventRemoteDataSourceImpl
+import com.example.plancton.data.datasource.TokenLocalDataSource
+import com.example.plancton.data.datasource.TokenLocalDataSourceImpl
 import dagger.Binds
 import dagger.Module
 
@@ -17,4 +19,8 @@ interface DataSourceModule {
     @Binds
     @AppScope
     fun bindAuthRemoteDataSource(impl: AuthRemoteDataSourceImpl): AuthRemoteDataSource
+
+    @Binds
+    @AppScope
+    fun bindTokenLocalDataSource(impl: TokenLocalDataSourceImpl): TokenLocalDataSource
 }
