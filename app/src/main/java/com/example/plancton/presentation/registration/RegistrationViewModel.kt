@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.plancton.domain.entity.AuthErrorType
+import com.example.plancton.domain.entity.AuthErrorType.HTTP400
 import com.example.plancton.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.domain.entity.RegistrationRequest
 import com.example.plancton.domain.usecase.RegisterUseCase
+import com.example.plancton.domain.usecase.SetTokenUseCase
 import com.example.plancton.presentation.registration.RegistrationState.Error
 import com.example.plancton.presentation.registration.RegistrationState.Initial
 import com.example.plancton.presentation.registration.RegistrationState.Loading
@@ -23,6 +25,7 @@ import javax.inject.Inject
 
 class RegistrationViewModel @Inject constructor(
     private val registerUseCase: RegisterUseCase,
+    private val setTokenUseCase: SetTokenUseCase,
 ) : ViewModel() {
 
     private val _state = MutableLiveData<RegistrationState>(Initial)
@@ -38,7 +41,7 @@ class RegistrationViewModel @Inject constructor(
 
             is HttpException -> {
                 when (exception.code()) {
-                    400 -> _state.value = Error(AuthErrorType.HTTP400)
+                    400 -> _state.value = Error(HTTP400)
 
                     else -> _state.value = Error(UNKNOWN)
                 }
@@ -48,17 +51,21 @@ class RegistrationViewModel @Inject constructor(
         }
     }
 
+    //TODO иммитация работы с сервером; переделать как api будет готово
     fun register(registrationRequest: RegistrationRequest) {
         _state.value = Loading
+
+        val emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$".toRegex()
 
         viewModelScope.launch(handleError) {
             //TODO избавиться от delay
             delay(1000)
-            registerUseCase(registrationRequest)
-            //throw ConnectException()
-            //throw HttpException(Response.error<Any>(400, "s".toResponseBody()))
-            //throw HttpException(Response.error<Any>(401, "s".toResponseBody()))
-            //throw NullPointerException()
+
+            if (registrationRequest.email.contains(emailRegex) && registrationRequest.password.isNotBlank()) {
+                registerUseCase(registrationRequest)
+                setTokenUseCase(registrationRequest.email + registrationRequest.password)
+            } else
+                _state.value = Error(HTTP400)
         }
     }
 }
