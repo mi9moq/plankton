@@ -12,7 +12,7 @@ class EventConverter @Inject constructor() {
         description = from.description,
         eventGroupId = from.eventGroupId,
         id = from.id,
-        replay = from.replay
+        replay = from.replay,
     )
 
     fun revert(from: UserEventDto): UserEvent = UserEvent(

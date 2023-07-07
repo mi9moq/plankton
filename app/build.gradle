@@ -60,4 +60,11 @@ dependencies {
     //Navigation
     def cicerone_version = "7.1"
     implementation "com.github.terrakok:cicerone:$cicerone_version"
+
+    //Network
+    def retrofit_version = "2.9.0"
+    def interceptor_version = "4.11.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
 }
