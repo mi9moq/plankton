@@ -18,4 +18,8 @@
     <string name="custom">CUSTOM</string>
     <string name="apply">APPLY</string>
     <string name="create">Create</string>
+    <string name="positive_button">Yes</string>
+    <string name="negative_button">No</string>
+    <string name="delete_event_title">Delete Event</string>
+    <string name="delete_event_message">Do you really want to delete an event?</string>
 </resources>

@@ -2,12 +2,13 @@ package com.example.plancton.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.plancton.R
 import com.example.plancton.databinding.FragmentMainScreenBinding
 import com.example.plancton.domain.entity.UserEvent
 import com.example.plancton.presentation.ViewModelFactory
@@ -42,7 +43,12 @@ class MainFragment : Fragment() {
         ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
     }
 
-    private val eventAdapter = EventAdapter(onClick = { Unit })
+    private val eventAdapter = EventAdapter(
+        onClick = { Unit },
+        onLongClickListener = {
+            showDeleteDialog(it)
+        }
+    )
 
     override fun onAttach(context: Context) {
         component.inject(this)
@@ -61,12 +67,35 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         addClickListeners()
+        setupSwipeRefreshListener()
         observeViewModel()
     }
 
     private fun addClickListeners() {
-        binding.add.setOnClickListener {
-            viewModel.openAdd()
+        with(binding) {
+            add.setOnClickListener {
+                viewModel.openAdd()
+            }
+            showCalendar.setOnClickListener {
+                showEventsCalendar()
+            }
+            showList.setOnClickListener {
+                showEventsList()
+            }
+        }
+    }
+
+    private fun showEventsCalendar() {
+        with(binding) {
+            eventsList.visibility = View.GONE
+            calendar.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showEventsList() {
+        with(binding) {
+            eventsList.visibility = View.VISIBLE
+            calendar.visibility = View.GONE
         }
     }
 
@@ -87,10 +116,38 @@ class MainFragment : Fragment() {
     }
 
     private fun applyContentSate(content: List<UserEvent>) {
-        binding.eventsList.adapter = eventAdapter
-        eventAdapter.submitList(content)
+        with(binding) {
+            contentContainer.visibility = View.VISIBLE
+            eventsList.adapter = eventAdapter
+            eventAdapter.submitList(content)
+            swipeLayout.isRefreshing = false
+        }
     }
 
     private fun applyLoadingState() {
+        with(binding) {
+            contentContainer.visibility = View.GONE
+            swipeLayout.isRefreshing = true
+        }
+    }
+
+    private fun setupSwipeRefreshListener() {
+        binding.swipeLayout.setOnRefreshListener {
+            viewModel.loadEvents()
+        }
+    }
+
+    private fun showDeleteDialog(event: UserEvent) {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle(R.string.delete_event_title)
+            setMessage(R.string.delete_event_message)
+            setPositiveButton(getString(R.string.positive_button)) { _, _ ->
+                viewModel.deleteEvent(event)
+            }
+            setNegativeButton(getString(R.string.negative_button)) { _, _ ->
+            }
+            create()
+            show()
+        }
     }
 }

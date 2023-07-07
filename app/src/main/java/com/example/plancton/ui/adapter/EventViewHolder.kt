@@ -11,7 +11,8 @@ import com.example.plancton.ui.utils.formatTime
 
 class EventViewHolder(
     parent: ViewGroup,
-    private val onClick: (UserEvent) -> Unit
+    private val onClick: (UserEvent) -> Unit,
+    private val onLongClickListener: (UserEvent) -> Unit,
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.event_item, parent, false)
 ) {
@@ -26,6 +27,10 @@ class EventViewHolder(
         }
         itemView.setOnClickListener {
             onClick(event)
+        }
+        itemView.setOnLongClickListener {
+            onLongClickListener(event)
+            true
         }
     }
 }
