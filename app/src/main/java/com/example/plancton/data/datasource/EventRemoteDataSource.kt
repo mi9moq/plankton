@@ -1,6 +1,5 @@
 package com.example.plancton.data.datasource
 
-import android.util.Log
 import com.example.plancton.data.converter.EventConverter
 import com.example.plancton.data.network.model.UserEventDto
 import com.example.plancton.domain.entity.UserEvent
@@ -13,6 +12,8 @@ interface EventRemoteDataSource {
     suspend fun create(userEvent: UserEvent)
 
     suspend fun getEvents(startDate: Date, endDate: Date): List<UserEvent>
+
+    suspend fun deleteEvent(event: UserEvent)
 }
 
 class EventRemoteDataSourceImpl @Inject constructor(
@@ -27,11 +28,15 @@ class EventRemoteDataSourceImpl @Inject constructor(
         return listEvent.map(eventConverter::revert)
     }
 
+    override suspend fun deleteEvent(event: UserEvent) {
+        listEvent.remove(event.let(eventConverter::convert))
+    }
+
     private companion object {
         val listEvent = mutableListOf(
             UserEventDto(
                 date = Date(1688947200000),
-                time = Time(3650000 ),
+                time = Time(3650000),
                 description = "Дождаться api",
                 eventGroupId = null,
                 id = null,

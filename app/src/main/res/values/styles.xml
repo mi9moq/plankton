@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="unpressed_button">
+        <item name="android:backgroundTint">@color/primary</item>
+    </style>
+
+    <style name="pressed_button">
+        <item name="android:backgroundTint">@color/grey</item>
+    </style>
+</resources>
