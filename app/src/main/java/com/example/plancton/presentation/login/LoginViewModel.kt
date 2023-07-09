@@ -12,6 +12,7 @@ import com.example.plancton.domain.entity.AuthErrorType.INTERNET
 import com.example.plancton.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.domain.usecase.GetTokenUseCase
 import com.example.plancton.domain.usecase.LoginUseCase
+import com.example.plancton.navigation.router.LoginRouter
 import com.example.plancton.presentation.login.LoginState.Error
 import com.example.plancton.presentation.login.LoginState.Initial
 import com.example.plancton.presentation.login.LoginState.Loading
@@ -28,6 +29,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
     private val getTokenUseCase: GetTokenUseCase,
+    private val router: LoginRouter,
 ) : ViewModel() {
 
     private val _state = MutableLiveData<LoginState>(Initial)
@@ -72,6 +74,7 @@ class LoginViewModel @Inject constructor(
                     _state.value = Error(HTTP401)
                 else {
                     Log.d("LOGIN", loginUseCase(auth))
+                    router.openMain()
                 }
             } else
                 _state.value = Error(HTTP400)
