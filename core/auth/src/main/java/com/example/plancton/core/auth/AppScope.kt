@@ -1,4 +1,4 @@
-package com.example.plancton.di
+package com.example.plancton.core.auth
 
 import javax.inject.Scope
 
