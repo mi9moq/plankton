@@ -1,7 +1,7 @@
-package com.example.plancton.data.converter
+package com.example.plancton.core.auth.data.converter
 
-import com.example.plancton.data.network.model.AuthDto
-import com.example.plancton.domain.entity.Auth
+import com.example.plancton.core.auth.data.network.model.AuthDto
+import com.example.plancton.core.auth.domain.entity.Auth
 import javax.inject.Inject
 
 class AuthConverter @Inject constructor() {

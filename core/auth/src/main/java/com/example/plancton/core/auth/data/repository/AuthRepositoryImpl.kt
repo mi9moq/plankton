@@ -1,9 +1,9 @@
-package com.example.plancton.data.repository
+package com.example.plancton.core.auth.data.repository
 
-import com.example.plancton.data.datasource.AuthRemoteDataSource
-import com.example.plancton.domain.entity.Auth
-import com.example.plancton.domain.entity.RegistrationRequest
-import com.example.plancton.domain.repository.AuthRepository
+import com.example.plancton.core.auth.data.datasource.AuthRemoteDataSource
+import com.example.plancton.core.auth.domain.entity.Auth
+import com.example.plancton.core.auth.domain.entity.RegistrationRequest
+import com.example.plancton.core.auth.domain.repository.AuthRepository
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(

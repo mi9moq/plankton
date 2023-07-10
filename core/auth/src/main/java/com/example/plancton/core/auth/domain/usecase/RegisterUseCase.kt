@@ -1,7 +1,7 @@
-package com.example.plancton.domain.usecase
+package com.example.plancton.core.auth.domain.usecase
 
-import com.example.plancton.domain.entity.RegistrationRequest
-import com.example.plancton.domain.repository.AuthRepository
+import com.example.plancton.core.auth.domain.entity.RegistrationRequest
+import com.example.plancton.core.auth.domain.repository.AuthRepository
 import javax.inject.Inject
 
 class RegisterUseCase @Inject constructor(

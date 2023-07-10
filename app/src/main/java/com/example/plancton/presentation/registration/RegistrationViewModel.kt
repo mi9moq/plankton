@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.plancton.domain.entity.AuthErrorType
-import com.example.plancton.domain.entity.AuthErrorType.HTTP400
-import com.example.plancton.domain.entity.AuthErrorType.UNKNOWN
-import com.example.plancton.domain.entity.RegistrationRequest
-import com.example.plancton.domain.usecase.RegisterUseCase
+import com.example.plancton.core.auth.domain.entity.AuthErrorType
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP400
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
+import com.example.plancton.core.auth.domain.entity.RegistrationRequest
+import com.example.plancton.core.auth.domain.usecase.RegisterUseCase
 import com.example.plancton.domain.usecase.SetTokenUseCase
 import com.example.plancton.presentation.registration.RegistrationState.Error
 import com.example.plancton.presentation.registration.RegistrationState.Initial

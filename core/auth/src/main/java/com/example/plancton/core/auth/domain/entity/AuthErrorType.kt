@@ -1,4 +1,4 @@
-package com.example.plancton.domain.entity
+package com.example.plancton.core.auth.domain.entity
 
 enum class AuthErrorType {
     INTERNET,

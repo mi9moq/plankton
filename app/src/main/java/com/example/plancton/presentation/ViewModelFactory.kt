@@ -2,7 +2,7 @@ package com.example.plancton.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.plancton.di.AppScope
+import com.example.plancton.core.auth.AppScope
 import javax.inject.Inject
 import javax.inject.Provider
 
