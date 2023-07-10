@@ -2,8 +2,8 @@ package com.example.plancton.di
 
 import android.content.Context
 import com.example.plancton.PlanctonApp
-import com.example.plancton.core.auth.AppScope
 import com.example.plancton.core.auth.AuthCoreModule
+import com.example.plancton.core.dagger.AppScope
 import com.example.plancton.ui.activity.MainActivity
 import com.example.plancton.ui.fragment.EntryFragment
 import com.example.plancton.ui.fragment.EventFragment
