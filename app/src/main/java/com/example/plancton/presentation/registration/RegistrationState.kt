@@ -1,6 +1,6 @@
 package com.example.plancton.presentation.registration
 
-import com.example.plancton.domain.entity.AuthErrorType
+import com.example.plancton.core.auth.domain.entity.AuthErrorType
 
 sealed interface RegistrationState {
 

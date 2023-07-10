@@ -1,7 +1,7 @@
-package com.example.plancton.data.converter
+package com.example.plancton.core.auth.data.converter
 
-import com.example.plancton.data.network.model.RegistrationRequestDto
-import com.example.plancton.domain.entity.RegistrationRequest
+import com.example.plancton.core.auth.data.network.model.RegistrationRequestDto
+import com.example.plancton.core.auth.domain.entity.RegistrationRequest
 import javax.inject.Inject
 
 class RegistrationRequestConverter @Inject constructor() {

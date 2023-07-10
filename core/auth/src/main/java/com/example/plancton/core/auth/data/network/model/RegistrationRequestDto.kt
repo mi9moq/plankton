@@ -1,4 +1,4 @@
-package com.example.plancton.data.network.model
+package com.example.plancton.core.auth.data.network.model
 
 data class RegistrationRequestDto(
     val email: String,

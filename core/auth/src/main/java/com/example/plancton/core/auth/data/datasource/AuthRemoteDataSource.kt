@@ -1,10 +1,10 @@
-package com.example.plancton.data.datasource
+package com.example.plancton.core.auth.data.datasource
 
 import android.util.Log
-import com.example.plancton.data.converter.AuthConverter
-import com.example.plancton.data.converter.RegistrationRequestConverter
-import com.example.plancton.domain.entity.Auth
-import com.example.plancton.domain.entity.RegistrationRequest
+import com.example.plancton.core.auth.data.converter.AuthConverter
+import com.example.plancton.core.auth.data.converter.RegistrationRequestConverter
+import com.example.plancton.core.auth.domain.entity.Auth
+import com.example.plancton.core.auth.domain.entity.RegistrationRequest
 import javax.inject.Inject
 
 interface AuthRemoteDataSource {
