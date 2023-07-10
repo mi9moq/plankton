@@ -1,6 +1,6 @@
 package com.example.plancton.di
 
-import com.example.plancton.core.auth.AppScope
+import com.example.plancton.core.dagger.AppScope
 import com.example.plancton.data.datasource.EventRemoteDataSource
 import com.example.plancton.data.datasource.EventRemoteDataSourceImpl
 import com.example.plancton.data.datasource.TokenLocalDataSource

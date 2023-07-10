@@ -4,9 +4,9 @@ import com.example.plancton.core.auth.data.datasource.AuthRemoteDataSource
 import com.example.plancton.core.auth.data.datasource.AuthRemoteDataSourceImpl
 import com.example.plancton.core.auth.data.repository.AuthRepositoryImpl
 import com.example.plancton.core.auth.domain.repository.AuthRepository
+import com.example.plancton.core.dagger.AppScope
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
 
 @Module
 interface AuthCoreModule {

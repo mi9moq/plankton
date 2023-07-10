@@ -1,6 +1,6 @@
 package com.example.plancton.di
 
-import com.example.plancton.core.auth.AppScope
+import com.example.plancton.core.dagger.AppScope
 import com.example.plancton.navigation.router.EntryRouter
 import com.example.plancton.navigation.router.EntryRouterImpl
 import com.example.plancton.navigation.router.EventRouter

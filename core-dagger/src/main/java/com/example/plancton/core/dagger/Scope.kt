@@ -1,4 +1,4 @@
-package com.example.plancton.core.auth
+package com.example.plancton.core.dagger
 
 import javax.inject.Scope
 
