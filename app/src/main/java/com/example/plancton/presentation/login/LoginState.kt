@@ -1,6 +1,6 @@
 package com.example.plancton.presentation.login
 
-import com.example.plancton.domain.entity.AuthErrorType
+import com.example.plancton.core.auth.domain.entity.AuthErrorType
 
 sealed interface LoginState {
 
