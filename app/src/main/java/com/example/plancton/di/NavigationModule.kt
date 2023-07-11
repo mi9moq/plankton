@@ -9,6 +9,8 @@ import com.example.plancton.navigation.router.LoginRouter
 import com.example.plancton.navigation.router.LoginRouterImpl
 import com.example.plancton.navigation.router.MainRouter
 import com.example.plancton.navigation.router.MainRouterImpl
+import com.example.plancton.navigation.router.RegisterRouter
+import com.example.plancton.navigation.router.RegisterRouterImpl
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -46,4 +48,8 @@ interface NavigationModule {
     @Binds
     @AppScope
     fun bindLoginRouter(impl: LoginRouterImpl): LoginRouter
+
+    @Binds
+    @AppScope
+    fun bindRegisterLogin(impl: RegisterRouterImpl): RegisterRouter
 }
