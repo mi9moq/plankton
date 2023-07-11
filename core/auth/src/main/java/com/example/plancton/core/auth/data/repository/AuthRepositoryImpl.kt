@@ -12,7 +12,6 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun login(auth: Auth): String =
         remoteDataSource.login(auth)
 
-    override suspend fun register(registrationRequest: RegistrationRequest) {
+    override suspend fun register(registrationRequest: RegistrationRequest): String =
         remoteDataSource.register(registrationRequest)
-    }
 }
