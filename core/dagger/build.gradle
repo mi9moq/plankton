@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.plancton.core-dagger'
+    namespace 'com.example.plancton.core.dagger'
     compileSdk 33
 
     defaultConfig {
