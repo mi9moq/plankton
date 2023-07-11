@@ -7,5 +7,5 @@ interface AuthRepository {
 
     suspend fun login(auth: Auth): String
 
-    suspend fun register(registrationRequest: RegistrationRequest)
+    suspend fun register(registrationRequest: RegistrationRequest): String
 }
