@@ -28,25 +28,25 @@ interface AuthCoreModule {
 
     companion object {
 
-        private const val BASE_URL = "http://81.177.197.88:8080/"
-
-        @AppScope
-        @Provides
-        fun provideHttpClient(): OkHttpClient =
-            OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                })
-                .build()
-
-        @AppScope
-        @Provides
-        fun provideRetrofit(httpClient: OkHttpClient): Retrofit =
-            Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(httpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+//        private const val BASE_URL = "http://81.177.197.88:8080/"
+//
+//        @AppScope
+//        @Provides
+//        fun provideHttpClient(): OkHttpClient =
+//            OkHttpClient.Builder()
+//                .addInterceptor(HttpLoggingInterceptor().apply {
+//                    level = HttpLoggingInterceptor.Level.BODY
+//                })
+//                .build()
+//
+//        @AppScope
+//        @Provides
+//        fun provideRetrofit(httpClient: OkHttpClient): Retrofit =
+//            Retrofit.Builder()
+//                .baseUrl(BASE_URL)
+//                .client(httpClient)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
 
         @AppScope
         @Provides

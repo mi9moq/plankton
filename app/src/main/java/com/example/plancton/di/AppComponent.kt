@@ -20,6 +20,7 @@ import dagger.Component
         NavigationModule::class,
         DataSourceModule::class,
         AuthCoreModule::class,
+        EventCoreModule::class,
     ]
 )
 @AppScope
