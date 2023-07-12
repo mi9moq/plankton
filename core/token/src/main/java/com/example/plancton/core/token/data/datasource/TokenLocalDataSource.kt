@@ -1,4 +1,4 @@
-package com.example.plancton.data.datasource
+package com.example.plancton.core.token.data.datasource
 
 import android.content.Context
 import android.content.SharedPreferences

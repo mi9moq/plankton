@@ -1,7 +1,7 @@
-package com.example.plancton.data.repository
+package com.example.plancton.core.token.data.repository
 
-import com.example.plancton.data.datasource.TokenLocalDataSource
-import com.example.plancton.domain.repository.TokenRepository
+import com.example.plancton.core.token.data.datasource.TokenLocalDataSource
+import com.example.plancton.core.token.domain.repository.TokenRepository
 import javax.inject.Inject
 
 class TokenRepositoryImpl @Inject constructor(

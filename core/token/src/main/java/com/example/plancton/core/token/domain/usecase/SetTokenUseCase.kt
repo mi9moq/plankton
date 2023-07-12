@@ -1,6 +1,6 @@
-package com.example.plancton.domain.usecase
+package com.example.plancton.core.token.domain.usecase
 
-import com.example.plancton.domain.repository.TokenRepository
+import com.example.plancton.core.token.domain.repository.TokenRepository
 import javax.inject.Inject
 
 class SetTokenUseCase @Inject constructor(

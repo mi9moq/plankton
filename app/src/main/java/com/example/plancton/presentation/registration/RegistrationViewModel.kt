@@ -9,7 +9,7 @@ import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP400
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.core.auth.domain.entity.RegistrationRequest
 import com.example.plancton.core.auth.domain.usecase.RegisterUseCase
-import com.example.plancton.domain.usecase.SetTokenUseCase
+import com.example.plancton.core.token.domain.usecase.SetTokenUseCase
 import com.example.plancton.navigation.router.RegisterRouter
 import com.example.plancton.presentation.registration.RegistrationState.Error
 import com.example.plancton.presentation.registration.RegistrationState.Initial

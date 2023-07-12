@@ -1,4 +1,4 @@
-package com.example.plancton.domain.repository
+package com.example.plancton.core.token.domain.repository
 
 interface TokenRepository {
 
