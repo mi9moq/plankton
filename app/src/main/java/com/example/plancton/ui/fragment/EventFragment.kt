@@ -23,9 +23,9 @@ import com.example.plancton.ui.activity.MainActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import java.sql.Time
-import java.text.SimpleDateFormat
-import java.util.Date
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 import javax.inject.Inject
 
@@ -43,8 +43,8 @@ class EventFragment : Fragment() {
         (requireActivity() as MainActivity).component
     }
 
-    private var chosenDate: Date? = null
-    private var chosenTime: Time? = null
+    private var chosenDate: LocalDate? = null
+    private var chosenTime: LocalTime? = null
 
     private var _binding: FragmentCreateBinding? = null
     private val binding: FragmentCreateBinding
@@ -108,23 +108,21 @@ class EventFragment : Fragment() {
         }
     }
 
-    private fun setDate(date: Date?) {
+    private fun setDate(date: LocalDate?) {
         if (date != null) {
             chosenDate = date
-            val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale("ru", "RU"))
-            val formattedDate = dateFormat.format(date)
-            binding.date.text = formattedDate.toString()
+            val dateFormat = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale("ru", "RU"))
+            binding.date.text = date.format(dateFormat)
         } else {
             binding.date.text = null
         }
     }
 
-    private fun setTime(time: Time?) {
+    private fun setTime(time: LocalTime?) {
         if (time != null) {
             chosenTime = time
-            val format = SimpleDateFormat("HH:mm", Locale("ru", "RU"))
-            val formattedTime = format.format(time)
-            binding.time.text = formattedTime
+            val format = DateTimeFormatter.ofPattern("HH:mm", Locale("ru", "RU"))
+            binding.time.text = time.format(format)
         } else {
             binding.time.text = null
         }
@@ -183,12 +181,10 @@ class EventFragment : Fragment() {
         } else {
             val eventDate = chosenDate!!
             val eventTime = chosenTime!!
-            val replayType = binding.dropdownMenu.selectedItem.toString()
             viewModel.create(
                 eventDate,
                 eventTime,
                 binding.etDescription.text.toString(),
-                replayType
             )
         }
     }
