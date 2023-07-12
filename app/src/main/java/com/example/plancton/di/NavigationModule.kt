@@ -1,11 +1,11 @@
 package com.example.plancton.di
 
 import com.example.plancton.core.dagger.AppScope
+import com.example.plancton.feature.auth.login.presentation.LoginRouter
 import com.example.plancton.navigation.router.EntryRouter
 import com.example.plancton.navigation.router.EntryRouterImpl
 import com.example.plancton.navigation.router.EventRouter
 import com.example.plancton.navigation.router.EventRouterImpl
-import com.example.plancton.navigation.router.LoginRouter
 import com.example.plancton.navigation.router.LoginRouterImpl
 import com.example.plancton.navigation.router.MainRouter
 import com.example.plancton.navigation.router.MainRouterImpl

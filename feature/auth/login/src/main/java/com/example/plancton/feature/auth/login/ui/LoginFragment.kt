@@ -1,6 +1,5 @@
-package com.example.plancton.ui.fragment
+package com.example.plancton.feature.auth.login.ui
 
-import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -9,23 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.plancton.PlanctonApp
-import com.example.plancton.R
-import com.example.plancton.databinding.FragmentLoginBinding
 import com.example.plancton.core.auth.domain.entity.Auth
 import com.example.plancton.core.auth.domain.entity.AuthErrorType
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP400
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP401
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.INTERNET
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
-import com.example.plancton.presentation.ViewModelFactory
-import com.example.plancton.presentation.login.LoginState
-import com.example.plancton.presentation.login.LoginState.Error
-import com.example.plancton.presentation.login.LoginState.Initial
-import com.example.plancton.presentation.login.LoginState.Loading
-import com.example.plancton.presentation.login.LoginViewModel
-import javax.inject.Inject
+import com.example.plancton.feature.auth.login.R
+import com.example.plancton.feature.auth.login.databinding.FragmentLoginBinding
+import com.example.plancton.feature.auth.login.di.component.getComponent
+import com.example.plancton.feature.auth.login.presentation.LoginState
+import com.example.plancton.feature.auth.login.presentation.LoginState.Error
+import com.example.plancton.feature.auth.login.presentation.LoginState.Initial
+import com.example.plancton.feature.auth.login.presentation.LoginState.Loading
+import com.example.plancton.feature.auth.login.presentation.LoginViewModel
 
 class LoginFragment : Fragment() {
 
@@ -33,20 +29,8 @@ class LoginFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
-
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[LoginViewModel::class.java]
-    }
-
-    private val component by lazy {
-        (requireActivity().application as PlanctonApp).component
-    }
-
-    override fun onAttach(context: Context) {
-        component.inject(this)
-        super.onAttach(context)
+    private val viewModel: LoginViewModel by lazy {
+        getComponent().viewModel()
     }
 
     override fun onCreateView(

@@ -11,14 +11,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.PlanctonApp
-import com.example.plancton.R
-import com.example.plancton.databinding.FragmentRegistrationBinding
 import com.example.plancton.core.auth.domain.entity.AuthErrorType
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP400
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP401
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.INTERNET
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.core.auth.domain.entity.RegistrationRequest
+import com.example.plancton.databinding.FragmentRegistrationBinding
+import com.example.plancton.feature.auth.login.R.string
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.registration.RegistrationState
 import com.example.plancton.presentation.registration.RegistrationState.Error
@@ -131,19 +131,19 @@ class RegistrationFragment : Fragment() {
         with(binding) {
             //TODO добавить картинку
             //TODO добавить анимации
-            tvError.text = getString(R.string.error_internet)
+            tvError.text = getString(string.error_internet)
         }
     }
 
     private fun showEnteredDataError() {
         with(binding) {
-            tvError.text = getString(R.string.error_entered_data)
+            tvError.text = getString(string.error_entered_data)
         }
     }
 
     private fun showUnknownError() {
         with(binding) {
-            tvError.text = getString(R.string.error_unknown)
+            tvError.text = getString(string.error_unknown)
         }
     }
 

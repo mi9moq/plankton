@@ -4,10 +4,11 @@ import android.content.Context
 import com.example.plancton.PlanctonApp
 import com.example.plancton.core.auth.AuthCoreModule
 import com.example.plancton.core.dagger.AppScope
+import com.example.plancton.feature.auth.login.di.annotation.LoginScope
+import com.example.plancton.feature.auth.login.di.component.LoginComponent
 import com.example.plancton.ui.activity.MainActivity
 import com.example.plancton.ui.fragment.EntryFragment
 import com.example.plancton.ui.fragment.EventFragment
-import com.example.plancton.ui.fragment.LoginFragment
 import com.example.plancton.ui.fragment.MainFragment
 import com.example.plancton.ui.fragment.RegistrationFragment
 import dagger.BindsInstance
@@ -31,13 +32,16 @@ interface AppComponent {
 
     fun inject(fragment: EventFragment)
 
-    fun inject(fragment: LoginFragment)
+    // fun inject(fragment: LoginFragment)
 
     fun inject(fragment: RegistrationFragment)
 
     fun inject(fragment: EntryFragment)
 
     fun inject(fragment: MainFragment)
+
+    @LoginScope
+    val loginComponentFactory: LoginComponent.Factory
 
     @Component.Factory
     interface Factory {

@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "plancton"
 include ':app'
 include ':core:auth'
-include ':core-dagger'
+include ':core:dagger'
+include ':feature:auth:login'

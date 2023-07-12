@@ -1,4 +1,4 @@
-package com.example.plancton.presentation.login
+package com.example.plancton.feature.auth.login.presentation
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -11,11 +11,9 @@ import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP401
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.INTERNET
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.core.auth.domain.usecase.LoginUseCase
-import com.example.plancton.domain.usecase.GetTokenUseCase
-import com.example.plancton.feature.auth.login.presentation.LoginRouter
-import com.example.plancton.presentation.login.LoginState.Error
-import com.example.plancton.presentation.login.LoginState.Initial
-import com.example.plancton.presentation.login.LoginState.Loading
+import com.example.plancton.feature.auth.login.presentation.LoginState.Error
+import com.example.plancton.feature.auth.login.presentation.LoginState.Initial
+import com.example.plancton.feature.auth.login.presentation.LoginState.Loading
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -28,7 +26,7 @@ import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    private val getTokenUseCase: GetTokenUseCase,
+    //private val getTokenUseCase: GetTokenUseCase,
     private val router: LoginRouter,
 ) : ViewModel() {
 
@@ -62,7 +60,7 @@ class LoginViewModel @Inject constructor(
         _state.value = Loading
 
         val emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$".toRegex()
-        val token = getTokenUseCase()
+        //val token = getTokenUseCase()
 
         viewModelScope.launch(handleError) {
             //TODO переделать при появлении api
@@ -70,12 +68,14 @@ class LoginViewModel @Inject constructor(
 
             if (auth.email.contains(emailRegex) && auth.password.isNotBlank()) {
 
-                if (auth.email + auth.password != token)
-                    _state.value = Error(HTTP401)
-                else {
-                    Log.d("LOGIN", loginUseCase(auth))
-                    router.openMain()
-                }
+//                if (auth.email + auth.password != token)
+//                    _state.value = Error(HTTP401)
+//                else {
+                Log.d("LOGIN", loginUseCase(auth))
+                router.openMain()
+//                }
+//            } else
+//                _state.value = Error(HTTP400)
             } else
                 _state.value = Error(HTTP400)
         }
