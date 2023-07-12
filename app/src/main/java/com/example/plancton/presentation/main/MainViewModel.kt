@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(
         loadEvents()
     }
 
-    fun loadEvents(){
+    fun loadEvents() {
         val calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
             set(Calendar.HOUR_OF_DAY, 0)
@@ -49,7 +49,7 @@ class MainViewModel @Inject constructor(
 
     fun deleteEvent(event: UserEvent) {
         viewModelScope.launch {
-            deleteEventUseCase(event)
+            deleteEventUseCase(event.id)
         }
     }
 

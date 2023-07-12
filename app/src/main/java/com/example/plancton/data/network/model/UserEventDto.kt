@@ -1,15 +1,15 @@
 package com.example.plancton.data.network.model
 
-import com.example.plancton.domain.entity.ReplayType
-import java.sql.Time
-import java.util.Date
-import java.util.UUID
+import com.google.gson.annotations.SerializedName
+import java.time.LocalDate
+import java.time.LocalTime
 
 data class UserEventDto(
-    val date: Date,
-    val time: Time,
+    val date: LocalDate,
+    val time: LocalTime,
     val description: String,
-    var eventGroupId: String? = null,
-    var id: UUID? = null,
-    var replay: ReplayType? = null,
+    @SerializedName("event_group_id")
+    val groupId: String,
+    @SerializedName("event_id")
+    var id: String,
 )

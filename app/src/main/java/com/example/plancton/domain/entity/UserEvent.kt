@@ -1,14 +1,12 @@
 package com.example.plancton.domain.entity
 
-import java.sql.Time
-import java.util.Date
-import java.util.UUID
+import java.time.LocalDate
+import java.time.LocalTime
 
 data class UserEvent(
-    val date: Date,
-    val time: Time,
+    val date: LocalDate,
+    val time: LocalTime,
     val description: String,
-    var eventGroupId: String? = null,
-    var id: UUID? = null,
-    var replay: ReplayType? = null,
+    val groupId: String,
+    val id: String,
 )
