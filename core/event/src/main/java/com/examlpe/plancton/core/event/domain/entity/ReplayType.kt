@@ -1,4 +1,4 @@
-package com.example.plancton.domain.entity
+package com.examlpe.plancton.core.event.domain.entity
 
 enum class ReplayType {
     Daily,

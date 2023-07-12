@@ -1,14 +1,14 @@
-package com.example.plancton.di
+package com.examlpe.plancton.core.event
 
+import com.examlpe.plancton.core.event.data.datasource.EventRemoteDataSource
+import com.examlpe.plancton.core.event.data.datasource.EventRemoteDataSourceImpl
+import com.examlpe.plancton.core.event.data.network.api.AuthInterceptor
+import com.examlpe.plancton.core.event.data.network.api.EventApi
+import com.examlpe.plancton.core.event.data.network.gsonadapter.LocalDateGsonAdapter
+import com.examlpe.plancton.core.event.data.network.gsonadapter.LocalTimeGsonAdapter
+import com.examlpe.plancton.core.event.data.repository.EventRepositoryImpl
+import com.examlpe.plancton.core.event.domain.repository.EventRepository
 import com.example.plancton.core.dagger.AppScope
-import com.example.plancton.data.LocalDateGsonAdapter
-import com.example.plancton.data.LocalTimeGsonAdapter
-import com.example.plancton.data.datasource.EventRemoteDataSource
-import com.example.plancton.data.datasource.EventRemoteDataSourceImpl
-import com.example.plancton.data.network.api.AuthInterceptor
-import com.example.plancton.data.network.api.EventApi
-import com.example.plancton.data.repository.EventRepositoryImpl
-import com.example.plancton.domain.repository.EventRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Binds

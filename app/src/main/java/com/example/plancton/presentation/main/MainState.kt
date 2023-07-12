@@ -1,6 +1,6 @@
 package com.example.plancton.presentation.main
 
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 
 sealed interface MainState{
 

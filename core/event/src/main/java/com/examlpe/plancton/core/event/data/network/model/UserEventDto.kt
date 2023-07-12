@@ -1,4 +1,4 @@
-package com.example.plancton.data.network.model
+package com.examlpe.plancton.core.event.data.network.model
 
 import com.google.gson.annotations.SerializedName
 import java.time.LocalDate

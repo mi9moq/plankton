@@ -1,8 +1,8 @@
-package com.example.plancton.data.datasource
+package com.examlpe.plancton.core.event.data.datasource
 
-import com.example.plancton.data.network.api.EventApi
-import com.example.plancton.domain.entity.EventRequest
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.data.network.api.EventApi
+import com.examlpe.plancton.core.event.domain.entity.EventRequest
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import java.util.Date
 import javax.inject.Inject
 

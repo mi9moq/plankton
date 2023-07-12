@@ -1,7 +1,7 @@
-package com.example.plancton.domain.usecase
+package com.examlpe.plancton.core.event.domain.usecase
 
-import com.example.plancton.domain.entity.UserEvent
-import com.example.plancton.domain.repository.EventRepository
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.repository.EventRepository
 import java.util.Date
 import javax.inject.Inject
 

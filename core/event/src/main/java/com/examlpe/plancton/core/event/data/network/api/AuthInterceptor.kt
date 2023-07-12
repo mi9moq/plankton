@@ -1,12 +1,12 @@
-package com.example.plancton.data.network.api
+package com.examlpe.plancton.core.event.data.network.api
 
-import com.example.plancton.data.datasource.TokenLocalDataSource
+import com.example.plancton.core.token.data.datasource.TokenLocalDataSource
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
 class AuthInterceptor @Inject constructor(
-    private val tokenLocalDataSource: TokenLocalDataSource
+    private val tokenLocalDataSource: TokenLocalDataSource,
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {

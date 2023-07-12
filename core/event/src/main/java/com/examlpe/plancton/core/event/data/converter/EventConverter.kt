@@ -1,7 +1,7 @@
-package com.example.plancton.data.converter
+package com.examlpe.plancton.core.event.data.converter
 
-import com.example.plancton.data.network.model.UserEventDto
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.data.network.model.UserEventDto
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import javax.inject.Inject
 
 class EventConverter @Inject constructor() {

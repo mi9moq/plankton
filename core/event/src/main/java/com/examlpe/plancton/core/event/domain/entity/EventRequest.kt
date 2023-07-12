@@ -1,4 +1,4 @@
-package com.example.plancton.domain.entity
+package com.examlpe.plancton.core.event.domain.entity
 
 import java.time.LocalDate
 import java.time.LocalTime

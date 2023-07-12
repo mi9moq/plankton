@@ -1,7 +1,7 @@
-package com.example.plancton.domain.repository
+package com.examlpe.plancton.core.event.domain.repository
 
-import com.example.plancton.domain.entity.EventRequest
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.entity.EventRequest
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import java.util.Date
 
 interface EventRepository {

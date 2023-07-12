@@ -1,4 +1,4 @@
-package com.example.plancton.data
+package com.examlpe.plancton.core.event.data.network.gsonadapter
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

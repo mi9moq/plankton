@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.plancton.domain.entity.EventRequest
-import com.example.plancton.domain.entity.ReplayType
-import com.example.plancton.domain.usecase.CreateSingleEventUseCase
+import com.examlpe.plancton.core.event.domain.entity.EventRequest
+import com.examlpe.plancton.core.event.domain.entity.ReplayType
+import com.examlpe.plancton.core.event.domain.usecase.CreateSingleEventUseCase
 import com.example.plancton.navigation.router.EventRouter
 import com.example.plancton.presentation.event.EventState.Initial
 import com.example.plancton.presentation.event.EventState.Loading

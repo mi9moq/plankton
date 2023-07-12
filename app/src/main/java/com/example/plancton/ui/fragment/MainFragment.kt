@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentMainScreenBinding
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.main.MainState
 import com.example.plancton.presentation.main.MainState.Content

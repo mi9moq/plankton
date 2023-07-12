@@ -1,7 +1,7 @@
 package com.example.plancton.ui.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 
 class EventItemDiffCallback : DiffUtil.ItemCallback<UserEvent>() {
 

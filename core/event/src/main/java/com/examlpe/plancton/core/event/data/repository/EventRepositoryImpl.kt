@@ -1,14 +1,14 @@
-package com.example.plancton.data.repository
+package com.examlpe.plancton.core.event.data.repository
 
-import com.example.plancton.data.datasource.EventRemoteDataSource
-import com.example.plancton.domain.entity.EventRequest
-import com.example.plancton.domain.entity.UserEvent
-import com.example.plancton.domain.repository.EventRepository
+import com.examlpe.plancton.core.event.data.datasource.EventRemoteDataSource
+import com.examlpe.plancton.core.event.domain.entity.EventRequest
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.repository.EventRepository
 import java.util.Date
 import javax.inject.Inject
 
 class EventRepositoryImpl @Inject constructor(
-    private val eventRemoteDataSource: EventRemoteDataSource
+    private val eventRemoteDataSource: EventRemoteDataSource,
 ) : EventRepository {
 
     override suspend fun createSingle(event: EventRequest) {
