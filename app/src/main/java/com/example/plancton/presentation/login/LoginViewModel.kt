@@ -10,7 +10,7 @@ import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP401
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.INTERNET
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.core.auth.domain.usecase.LoginUseCase
-import com.example.plancton.domain.usecase.SetTokenUseCase
+import com.example.plancton.core.token.domain.usecase.SetTokenUseCase
 import com.example.plancton.navigation.router.LoginRouter
 import com.example.plancton.presentation.login.LoginState.Error
 import com.example.plancton.presentation.login.LoginState.Initial

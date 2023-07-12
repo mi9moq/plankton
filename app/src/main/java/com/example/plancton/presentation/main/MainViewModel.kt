@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.plancton.domain.entity.UserEvent
-import com.example.plancton.domain.usecase.DeleteEventUseCase
-import com.example.plancton.domain.usecase.GetEventsUseCase
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.usecase.DeleteEventUseCase
+import com.examlpe.plancton.core.event.domain.usecase.GetEventsUseCase
 import com.example.plancton.navigation.router.MainRouter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

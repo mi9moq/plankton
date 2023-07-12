@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentCreateBinding
-import com.example.plancton.domain.entity.ReplayType
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.entity.ReplayType
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.event.EventState
 import com.example.plancton.presentation.event.EventState.Content

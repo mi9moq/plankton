@@ -16,3 +16,5 @@ rootProject.name = "plancton"
 include ':app'
 include ':core:auth'
 include ':core:dagger'
+include ':core:event'
+include ':core:token'

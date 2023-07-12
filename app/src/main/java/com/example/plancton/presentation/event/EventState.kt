@@ -1,8 +1,6 @@
 package com.example.plancton.presentation.event
 
-import com.example.plancton.domain.entity.UserEvent
-import java.sql.Time
-import java.util.Date
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 
 sealed interface EventState {
 

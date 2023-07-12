@@ -2,7 +2,7 @@ package com.example.plancton.ui.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 
 class EventAdapter(
     private val onClick: (UserEvent) -> Unit,

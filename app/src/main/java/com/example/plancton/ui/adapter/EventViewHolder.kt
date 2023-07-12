@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.plancton.R
 import com.example.plancton.databinding.EventItemBinding
-import com.example.plancton.domain.entity.UserEvent
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.ui.utils.formatDate
 import com.example.plancton.ui.utils.formatTime
 
