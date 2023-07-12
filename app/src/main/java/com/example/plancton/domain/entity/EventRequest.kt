@@ -3,10 +3,8 @@ package com.example.plancton.domain.entity
 import java.time.LocalDate
 import java.time.LocalTime
 
-data class UserEvent(
+data class EventRequest (
     val date: LocalDate,
     val time: LocalTime,
-    val description: String,
-    val groupId: String,
-    val id: String,
+    val description: String?,
 )

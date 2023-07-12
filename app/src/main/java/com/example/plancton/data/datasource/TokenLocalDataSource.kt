@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 interface TokenLocalDataSource {
 
-    fun get(): String
+    fun get(): String?
 
     fun set(token: String)
 
@@ -29,8 +29,8 @@ class TokenLocalDataSourceImpl @Inject constructor(
     }
 
     //TODO выглядит не очень; поменять возвращаемый тип запроса согласно api
-    override fun get(): String =
-        sharedPreferences.getString(TOKEN_KEY, EMPTY_VALUE) ?: EMPTY_VALUE
+    override fun get(): String? =
+        sharedPreferences.getString(TOKEN_KEY, null)
 
 
     override fun set(token: String) {

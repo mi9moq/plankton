@@ -12,11 +12,6 @@ import dagger.Module
 @Module
 interface RepositoryModule {
 
-
-    @Binds
-    @AppScope
-    fun bindEventRepository(impl: EventRepositoryImpl): EventRepository
-
     @Binds
     @AppScope
     fun bindTokenRepository(impl: TokenRepositoryImpl): TokenRepository

@@ -7,6 +7,6 @@ class GetTokenUseCase @Inject constructor(
     private val repository: TokenRepository,
 ) {
 
-    operator fun invoke(): String =
+    operator fun invoke(): String? =
         repository.get()
 }

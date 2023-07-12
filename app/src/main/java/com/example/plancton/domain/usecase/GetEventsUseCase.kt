@@ -9,5 +9,5 @@ class GetEventsUseCase @Inject constructor(
     private val repository: EventRepository
 ) {
     suspend operator fun invoke(startDate: Date, endDate: Date): List<UserEvent> =
-        repository.getEvents(startDate, endDate)
+        repository.get(startDate, endDate)
 }

@@ -13,9 +13,5 @@ interface DataSourceModule {
 
     @Binds
     @AppScope
-    fun bindEventRemoteDataSource(impl: EventRemoteDataSourceImpl): EventRemoteDataSource
-
-    @Binds
-    @AppScope
     fun bindTokenLocalDataSource(impl: TokenLocalDataSourceImpl): TokenLocalDataSource
 }
