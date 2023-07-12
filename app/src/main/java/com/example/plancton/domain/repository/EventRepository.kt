@@ -1,13 +1,14 @@
 package com.example.plancton.domain.repository
 
+import com.example.plancton.domain.entity.EventRequest
 import com.example.plancton.domain.entity.UserEvent
 import java.util.Date
 
 interface EventRepository {
 
-    suspend fun create(userEvent: UserEvent)
+    suspend fun createSingle(event: EventRequest)
 
-    suspend fun getEvents(startDate: Date, endDate: Date): List<UserEvent>
+    suspend fun get(startDate: Date, endDate: Date): List<UserEvent>
 
-    suspend fun deleteEvent(event: UserEvent)
+    suspend fun delete(id: String)
 }

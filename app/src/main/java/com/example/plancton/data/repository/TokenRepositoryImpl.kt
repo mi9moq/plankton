@@ -8,7 +8,7 @@ class TokenRepositoryImpl @Inject constructor(
     private val dataSource: TokenLocalDataSource,
 ) : TokenRepository {
 
-    override fun get(): String =
+    override fun get(): String? =
         dataSource.get()
 
     override fun set(token: String) {
