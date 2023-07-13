@@ -10,6 +10,8 @@ import com.examlpe.plancton.core.event.domain.usecase.CreateSingleEventUseCase
 import com.example.plancton.navigation.router.EventRouter
 import com.example.plancton.presentation.event.EventState.Initial
 import com.example.plancton.presentation.event.EventState.Loading
+import com.example.plancton.ui.utils.handleEventError
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.LocalDate
@@ -35,6 +37,10 @@ class EventViewModel @Inject constructor(
         MutableLiveData(ReplayType.values().toList())
     val replayTypes: LiveData<List<ReplayType>> = _replayTypes
 
+    private val handler = CoroutineExceptionHandler { _, throwable ->
+        _state.value = EventState.Error(handleEventError(throwable))
+    }
+
     fun setDate(timeMillis: Long) {
         _date.value = Instant.ofEpochMilli(timeMillis).atZone(ZoneId.systemDefault()).toLocalDate()
     }
@@ -47,11 +53,21 @@ class EventViewModel @Inject constructor(
         val description = inputDescription ?: ""
         val event = EventRequest(date, time, description)
 
-        //TODO добавить handler
-        viewModelScope.launch {
+        viewModelScope.launch(handler) {
             _state.value = Loading
             createSingleEventUseCase(event)
             router.back()
         }
+    }
+
+    fun tryAgain() {
+        _state.value = Initial
+        _time.value = null
+        _date.value = null
+    }
+
+    fun reLogin() {
+        //TODO delete token
+        router.openEntry()
     }
 }
