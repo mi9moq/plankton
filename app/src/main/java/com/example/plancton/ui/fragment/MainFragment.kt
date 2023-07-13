@@ -45,8 +45,8 @@ class MainFragment : Fragment() {
 
     private val eventAdapter = EventAdapter(
         onClick = { Unit },
-        onLongClickListener = {
-            showDeleteDialog(it)
+        onLongClickListener = { event ->
+            showDeleteDialog(event.id)
         }
     )
 
@@ -137,12 +137,12 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun showDeleteDialog(event: UserEvent) {
+    private fun showDeleteDialog(id: String) {
         AlertDialog.Builder(requireContext()).apply {
             setTitle(R.string.delete_event_title)
             setMessage(R.string.delete_event_message)
             setPositiveButton(getString(R.string.positive_button)) { _, _ ->
-                viewModel.deleteEvent(event)
+                viewModel.deleteEvent(id)
             }
             setNegativeButton(getString(R.string.negative_button)) { _, _ ->
             }

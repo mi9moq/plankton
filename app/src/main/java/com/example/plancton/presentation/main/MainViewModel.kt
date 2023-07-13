@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.examlpe.plancton.core.event.domain.usecase.DeleteEventUseCase
 import com.examlpe.plancton.core.event.domain.usecase.GetEventsUseCase
 import com.example.plancton.navigation.router.MainRouter
@@ -53,9 +52,9 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun deleteEvent(event: UserEvent) {
+    fun deleteEvent(id: String) {
         viewModelScope.launch {
-            deleteEventUseCase(event.id)
+            deleteEventUseCase(id)
         }
     }
 
