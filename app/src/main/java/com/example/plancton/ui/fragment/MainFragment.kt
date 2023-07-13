@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentMainScreenBinding
-import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.main.MainState
 import com.example.plancton.presentation.main.MainState.Content
@@ -58,7 +59,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         return binding.root
@@ -81,6 +82,21 @@ class MainFragment : Fragment() {
             }
             showList.setOnClickListener {
                 showEventsList()
+            }
+            toolBar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.change_user -> {
+                        viewModel.changeUser()
+                        true
+                    }
+
+                    R.id.edit_person_data -> {
+                        Toast.makeText(requireContext(), "!!!", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+
+                    else -> false
+                }
             }
         }
     }

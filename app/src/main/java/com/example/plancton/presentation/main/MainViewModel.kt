@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.examlpe.plancton.core.event.domain.usecase.DeleteEventUseCase
 import com.examlpe.plancton.core.event.domain.usecase.GetEventsUseCase
+import com.example.plancton.core.token.domain.usecase.DeleteTokenUseCase
 import com.example.plancton.navigation.router.MainRouter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -19,6 +20,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val getEventsUseCase: GetEventsUseCase,
     private val deleteEventUseCase: DeleteEventUseCase,
+    private val deleteTokenUseCase: DeleteTokenUseCase,
     private val router: MainRouter,
 ) : ViewModel() {
 
@@ -61,6 +63,11 @@ class MainViewModel @Inject constructor(
 
     fun openAdd() {
         router.openAddEvent()
+    }
+
+    fun changeUser() {
+        deleteTokenUseCase()
+        router.openEntry()
     }
 
     private fun getStartDate(timeInMillis: Long): LocalDate =

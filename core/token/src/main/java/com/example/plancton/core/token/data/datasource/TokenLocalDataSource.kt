@@ -20,8 +20,6 @@ class TokenLocalDataSourceImpl @Inject constructor(
     companion object {
         private const val PREFS_NAME = "token"
         private const val TOKEN_KEY = "access token"
-
-        private const val EMPTY_VALUE = ""
     }
 
     private val sharedPreferences: SharedPreferences by lazy {
@@ -43,7 +41,7 @@ class TokenLocalDataSourceImpl @Inject constructor(
     override fun delete() {
         sharedPreferences
             .edit()
-            .putString(TOKEN_KEY, EMPTY_VALUE)
+            .remove(TOKEN_KEY)
             .apply()
     }
 }
