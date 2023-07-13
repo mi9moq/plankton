@@ -21,6 +21,6 @@ class MainRouterImpl @Inject constructor(
     }
 
     override fun openEntry() {
-        router.navigateTo(getEntryScreen())
+        router.newRootScreen(getEntryScreen())
     }
 }
