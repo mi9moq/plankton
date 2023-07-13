@@ -15,6 +15,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/drawer_menu"
+                app:title="@string/app_name" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/show_calendar"
                 android:layout_width="120dp"
@@ -23,25 +33,25 @@
                 android:text="calendar"
                 app:layout_constraintEnd_toStartOf="@+id/show_list"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tool_bar" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/show_list"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="list"
                 android:backgroundTint="@color/grey"
+                android:text="list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/show_calendar"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tool_bar" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/events_list"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/show_calendar"
                 tools:listitem="@layout/event_item" />
