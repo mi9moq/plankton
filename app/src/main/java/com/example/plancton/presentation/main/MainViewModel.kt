@@ -10,8 +10,10 @@ import com.examlpe.plancton.core.event.domain.usecase.GetEventsUseCase
 import com.example.plancton.navigation.router.MainRouter
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Calendar
-import java.util.Date
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -19,6 +21,10 @@ class MainViewModel @Inject constructor(
     private val deleteEventUseCase: DeleteEventUseCase,
     private val router: MainRouter,
 ) : ViewModel() {
+
+    companion object {
+        private const val YEAR_MILLIS = 24 * 60 * 60 * 1000 * 365L
+    }
 
     private val _state: MutableLiveData<MainState> = MutableLiveData(MainState.Initial)
     val state: LiveData<MainState> = _state
@@ -40,8 +46,8 @@ class MainViewModel @Inject constructor(
             delay(2500L)
             _state.value = MainState.Content(
                 getEventsUseCase(
-                    Date(calendar.timeInMillis),
-                    Date(calendar.timeInMillis + 24 * 60 * 60 * 1000 * 365L)
+                    getStartDate(calendar.timeInMillis),
+                    getEndDate(calendar.timeInMillis)
                 )
             )
         }
@@ -56,4 +62,11 @@ class MainViewModel @Inject constructor(
     fun openAdd() {
         router.openAddEvent()
     }
+
+    private fun getStartDate(timeInMillis: Long): LocalDate =
+        Instant.ofEpochMilli(timeInMillis).atZone(ZoneId.systemDefault()).toLocalDate()
+
+    private fun getEndDate(timeInMillis: Long): LocalDate =
+        Instant.ofEpochMilli(timeInMillis + YEAR_MILLIS).atZone(ZoneId.systemDefault())
+            .toLocalDate()
 }
