@@ -6,11 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.CONNECTION
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.NOT_FOUND
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.UNAUTHORIZED
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.UNKNOWN
+import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentMainScreenBinding
-import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.main.MainState
 import com.example.plancton.presentation.main.MainState.Content
@@ -20,6 +26,7 @@ import com.example.plancton.presentation.main.MainState.Loading
 import com.example.plancton.presentation.main.MainViewModel
 import com.example.plancton.ui.activity.MainActivity
 import com.example.plancton.ui.adapter.EventAdapter
+import com.example.plancton.ui.utils.showUnauthorizedDialog
 import javax.inject.Inject
 
 class MainFragment : Fragment() {
@@ -108,16 +115,28 @@ class MainFragment : Fragment() {
             Initial -> Unit
             Loading -> applyLoadingState()
             is Content -> applyContentSate(state.content)
-            is Error -> applyErrorState(state.message)
+            is Error -> applyErrorState(state.type)
         }
     }
 
-    private fun applyErrorState(message: String) {
+    private fun applyErrorState(type: EventErrorType) {
+        with(binding) {
+            errorContainer.isVisible = true
+            contentContainer.isVisible = false
+            swipeLayout.isRefreshing = false
+        }
+        when (type) {
+            UNAUTHORIZED -> showUnauthorizedDialog(viewModel::reLogin)
+            CONNECTION -> applyConnectionError()
+            NOT_FOUND -> Unit
+            UNKNOWN -> applyUnknownError()
+        }
     }
 
     private fun applyContentSate(content: List<UserEvent>) {
         with(binding) {
-            contentContainer.visibility = View.VISIBLE
+            contentContainer.isVisible = true
+            errorContainer.isVisible = false
             eventsList.adapter = eventAdapter
             eventAdapter.submitList(content)
             swipeLayout.isRefreshing = false
@@ -126,8 +145,9 @@ class MainFragment : Fragment() {
 
     private fun applyLoadingState() {
         with(binding) {
-            contentContainer.visibility = View.GONE
             swipeLayout.isRefreshing = true
+            contentContainer.isVisible = false
+            errorContainer.isVisible = false
         }
     }
 
@@ -148,6 +168,24 @@ class MainFragment : Fragment() {
             }
             create()
             show()
+        }
+    }
+
+    private fun applyConnectionError() {
+        with(binding) {
+            errorMessage.text = getString(R.string.connection_error_message)
+            errorButton.setOnClickListener {
+                viewModel.loadEvents()
+            }
+        }
+    }
+
+    private fun applyUnknownError() {
+        with(binding) {
+            errorMessage.text = getString(R.string.unknown_error_message)
+            errorButton.setOnClickListener {
+                viewModel.loadEvents()
+            }
         }
     }
 }

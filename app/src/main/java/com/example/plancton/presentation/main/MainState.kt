@@ -1,5 +1,6 @@
 package com.example.plancton.presentation.main
 
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType
 import com.examlpe.plancton.core.event.domain.entity.UserEvent
 
 sealed interface MainState{
@@ -10,5 +11,5 @@ sealed interface MainState{
 
     data class Content(val content: List<UserEvent>): MainState
 
-    data class Error(val message: String): MainState
+    data class Error(val type: EventErrorType): MainState
 }
