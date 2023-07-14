@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/edit_person_data"
+        android:id="@+id/edit_user_data"
         android:title="@string/editing_personal_data" />
     <item
         android:id="@+id/change_user"

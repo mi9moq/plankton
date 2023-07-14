@@ -70,6 +70,10 @@ class MainViewModel @Inject constructor(
         router.openEntry()
     }
 
+    fun editUser() {
+        router.openEditUser()
+    }
+
     private fun getStartDate(timeInMillis: Long): LocalDate =
         Instant.ofEpochMilli(timeInMillis).atZone(ZoneId.systemDefault()).toLocalDate()
 
