@@ -27,4 +27,5 @@
     <string name="error_invalid_data">Invalid email address or password</string>
     <string name="editing_personal_data">Editing personal data</string>
     <string name="change_user">Change user</string>
+    <string name="save">SAVE</string>
 </resources>
