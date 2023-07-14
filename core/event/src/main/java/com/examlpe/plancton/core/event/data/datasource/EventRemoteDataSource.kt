@@ -27,5 +27,6 @@ class EventRemoteDataSourceImpl @Inject constructor(
         eventApi.getAll(startDate, endDate)
 
     override suspend fun delete(id: String) {
+        eventApi.delete(id)
     }
 }

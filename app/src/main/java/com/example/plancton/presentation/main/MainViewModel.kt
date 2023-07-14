@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.examlpe.plancton.core.event.domain.usecase.DeleteEventUseCase
 import com.examlpe.plancton.core.event.domain.usecase.GetEventsUseCase
 import com.example.plancton.core.token.domain.usecase.DeleteTokenUseCase
 import com.example.plancton.navigation.router.MainRouter
-import kotlinx.coroutines.delay
+import com.example.plancton.ui.utils.handleEventError
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.LocalDate
@@ -31,6 +31,10 @@ class MainViewModel @Inject constructor(
     private val _state: MutableLiveData<MainState> = MutableLiveData(MainState.Initial)
     val state: LiveData<MainState> = _state
 
+    private val handler = CoroutineExceptionHandler { _, throwable ->
+        _state.value = MainState.Error(handleEventError(throwable))
+    }
+
     init {
         loadEvents()
     }
@@ -43,9 +47,8 @@ class MainViewModel @Inject constructor(
             set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
         }
-        viewModelScope.launch {
+        viewModelScope.launch(handler) {
             _state.value = MainState.Loading
-            delay(2500L)
             _state.value = MainState.Content(
                 getEventsUseCase(
                     getStartDate(calendar.timeInMillis),
@@ -55,9 +58,9 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun deleteEvent(event: UserEvent) {
+    fun deleteEvent(id: String) {
         viewModelScope.launch {
-            deleteEventUseCase(event.id)
+            deleteEventUseCase(id)
         }
     }
 
@@ -72,6 +75,11 @@ class MainViewModel @Inject constructor(
 
     fun editUser() {
         router.openEditUser()
+    }
+
+    fun reLogin() {
+        //TODO delete token
+        router.openEntry()
     }
 
     private fun getStartDate(timeInMillis: Long): LocalDate =

@@ -1,6 +1,7 @@
 package com.example.plancton.di
 
 import androidx.lifecycle.ViewModel
+import com.example.plancton.presentation.ActivityViewModel
 import com.example.plancton.presentation.entry.EntryViewModel
 import com.example.plancton.presentation.event.EventViewModel
 import com.example.plancton.presentation.login.LoginViewModel
@@ -43,4 +44,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(UserViewModel::class)
     fun bindUserViewModel(impl: UserViewModel): ViewModel
+  
+    @Binds
+    @IntoMap
+    @ViewModelKey(ActivityViewModel::class)
+    fun bindActivityViewModel(impl: ActivityViewModel): ViewModel
 }

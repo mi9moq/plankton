@@ -7,7 +7,7 @@
     <string name="enter_email">Enter email</string>
     <string name="enter_password">Enter password</string>
     <string name="sign_in">SIGN IN</string>
-    <string name="sign_up">SIGN UP</string>
+    <string name="sign_up">Sign up</string>
     <string name="error_unknown">Something wrong, we will fix it soon</string>
     <string name="choose_replay_type">Choose replay type</string>
     <string name="single">SINGLE</string>
@@ -28,4 +28,10 @@
     <string name="editing_personal_data">Editing personal data</string>
     <string name="change_user">Change user</string>
     <string name="save">SAVE</string>
+    <string name="try_again">try again</string>
+    <string name="authorisation_error">Authorisation error</string>
+    <string name="authorisation_error_message">You are not authorized, please login again</string>
+    <string name="connection_error_message">Connection error, please check your internet connection</string>
+    <string name="unknown_error_message">Unknown error</string>
+    <string name="no_account">Don\'t have an account? </string>
 </resources>
