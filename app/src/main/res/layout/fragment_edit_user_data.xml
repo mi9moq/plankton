@@ -4,16 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_error"
+    <LinearLayout
+        android:id="@+id/error_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/margin_20"
-        android:layout_marginTop="@dimen/margin_20"
-        android:gravity="center"
-        android:visibility="gone"
-        tools:text="sdfdfsfds"
-        tools:visibility="visible" />
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:visibility="visible"
+            tools:text="@tools:sample/date/ddmmyy" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/b_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_20"
+            android:text="@string/try_again" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -43,23 +60,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:inputType="textPersonName" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_20"
-            android:layout_marginTop="@dimen/margin_20"
-            android:hint="@string/enter_email">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
