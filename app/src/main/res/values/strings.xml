@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">plancton</string>
+    <string name="app_name">Plankton</string>
     <string name="pick_date">pick a date</string>
     <string name="pick_time">pick a time</string>
     <string name="null_binding">Cannot access binding because it is null. Is the view visible?</string>
@@ -25,6 +25,9 @@
     <string name="error_internet">Check your internet connection</string>
     <string name="error_entered_data">Check entered data</string>
     <string name="error_invalid_data">Invalid email address or password</string>
+    <string name="editing_personal_data">Editing personal data</string>
+    <string name="change_user">Change user</string>
+    <string name="save">SAVE</string>
     <string name="try_again">try again</string>
     <string name="authorisation_error">Authorisation error</string>
     <string name="authorisation_error_message">You are not authorized, please login again</string>

@@ -7,6 +7,7 @@ import com.example.plancton.presentation.event.EventViewModel
 import com.example.plancton.presentation.login.LoginViewModel
 import com.example.plancton.presentation.main.MainViewModel
 import com.example.plancton.presentation.registration.RegistrationViewModel
+import com.example.plancton.presentation.user.UserViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -39,6 +40,11 @@ interface ViewModelModule {
     @ViewModelKey(MainViewModel::class)
     fun bindMainViewModel(impl: MainViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(UserViewModel::class)
+    fun bindUserViewModel(impl: UserViewModel): ViewModel
+  
     @Binds
     @IntoMap
     @ViewModelKey(ActivityViewModel::class)

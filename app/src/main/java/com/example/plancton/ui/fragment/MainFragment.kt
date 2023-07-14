@@ -65,7 +65,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         return binding.root
@@ -88,6 +88,21 @@ class MainFragment : Fragment() {
             }
             showList.setOnClickListener {
                 showEventsList()
+            }
+            toolBar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.change_user -> {
+                        viewModel.changeUser()
+                        true
+                    }
+
+                    R.id.edit_user_data -> {
+                        viewModel.editUser()
+                        true
+                    }
+
+                    else -> false
+                }
             }
         }
     }

@@ -42,6 +42,7 @@ dependencies {
     implementation project(":core:dagger")
     implementation project(":core:event")
     implementation project(":core:token")
+    implementation project(":core:user")
 
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
