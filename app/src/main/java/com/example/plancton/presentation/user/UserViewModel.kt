@@ -41,4 +41,6 @@ class UserViewModel @Inject constructor(
             changeUserUseCase(token!!, changeUserRequest)
         }
     }
+
+    //TODO выход с экрана нужен
 }
