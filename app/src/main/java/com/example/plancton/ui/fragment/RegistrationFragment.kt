@@ -14,9 +14,8 @@ import com.example.plancton.PlanctonApp
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentRegistrationBinding
 import com.example.plancton.core.auth.domain.entity.AuthErrorType
-import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP400
-import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP401
-import com.example.plancton.core.auth.domain.entity.AuthErrorType.INTERNET
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.USER_NOT_FOUND
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.CONNECTION
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
 import com.example.plancton.core.auth.domain.entity.RegistrationRequest
 import com.example.plancton.presentation.ViewModelFactory
@@ -116,14 +115,13 @@ class RegistrationFragment : Fragment() {
         }
 
         when (authErrorType) {
-            INTERNET -> showInternetError()
-
-            //TODO другие названия функций для 400
-            HTTP400 -> showEnteredDataError()
+            CONNECTION -> showInternetError()
 
             UNKNOWN -> showUnknownError()
 
-            HTTP401 -> Unit //Не приходит с бэка
+            USER_NOT_FOUND -> Unit //Не приходит с бэка
+            AuthErrorType.WRONG_EMAIL -> Unit
+            AuthErrorType.WRONG_PASSWORD -> Unit
         }
     }
 
