@@ -35,10 +35,10 @@ class UserViewModel @Inject constructor(
         }
     }
 
-    fun change(changeUserRequest: ChangeUserRequest) {
+    fun change(fullName: String) {
         viewModelScope.launch {
             val token = getTokenUseCase() //Специфика работы бэкэнда
-            changeUserUseCase(token!!, changeUserRequest)
+            changeUserUseCase(token!!, ChangeUserRequest(fullName))
         }
     }
 

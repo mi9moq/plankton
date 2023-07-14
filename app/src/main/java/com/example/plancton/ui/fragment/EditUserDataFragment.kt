@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.PlanctonApp
-import com.example.plancton.core.user.domain.entity.ChangeUserRequest
 import com.example.plancton.core.user.domain.entity.User
 import com.example.plancton.databinding.FragmentEditUserDataBinding
 import com.example.plancton.presentation.ViewModelFactory
@@ -58,18 +57,11 @@ class EditUserDataFragment : Fragment() {
     private fun initListeners() {
         with(binding) {
             bSave.setOnClickListener {
-                val changeUserRequest = getChangeUserRequest()
-                viewModel.change(changeUserRequest)
+                val fullName = etFullName.text.toString()
+                viewModel.change(fullName)
             }
         }
     }
-
-    private fun getChangeUserRequest(): ChangeUserRequest =
-        with(binding) {
-            val fullName = etFullName.text.toString()
-            val email = etEmail.text.toString()
-            ChangeUserRequest(fullName, email)
-        }
 
     private fun initObservers() {
         viewModel.state.observe(viewLifecycleOwner, ::applyState)
@@ -86,7 +78,6 @@ class EditUserDataFragment : Fragment() {
     private fun applyContentState(user: User) {
         with(binding) {
             etFullName.setText(user.fullName)
-            etEmail.setText(user.email)
         }
     }
 
