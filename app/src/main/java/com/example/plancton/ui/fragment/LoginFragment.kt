@@ -29,6 +29,10 @@ import javax.inject.Inject
 
 class LoginFragment : Fragment() {
 
+    companion object{
+        fun newInstance() = LoginFragment()
+    }
+
     private var _binding: FragmentLoginBinding? = null
     private val binding
         get() = _binding!!
@@ -72,6 +76,9 @@ class LoginFragment : Fragment() {
                 val auth = getAuth()
 
                 viewModel.login(auth)
+            }
+            signUp.setOnClickListener {
+                viewModel.openSignup()
             }
         }
     }
