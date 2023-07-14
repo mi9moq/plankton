@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.examlpe.plancton.core.event.domain.entity.EventRequest
 import com.examlpe.plancton.core.event.domain.entity.ReplayType
 import com.examlpe.plancton.core.event.domain.usecase.CreateSingleEventUseCase
+import com.example.plancton.core.token.domain.usecase.DeleteTokenUseCase
 import com.example.plancton.navigation.router.EventRouter
 import com.example.plancton.presentation.event.EventState.Initial
 import com.example.plancton.presentation.event.EventState.Loading
@@ -22,6 +23,7 @@ import javax.inject.Inject
 class EventViewModel @Inject constructor(
     private val createSingleEventUseCase: CreateSingleEventUseCase,
     private val router: EventRouter,
+    private val deleteTokenUseCase: DeleteTokenUseCase,
 ) : ViewModel() {
 
     private val _state: MutableLiveData<EventState> = MutableLiveData(Initial)
@@ -67,7 +69,7 @@ class EventViewModel @Inject constructor(
     }
 
     fun reLogin() {
-        //TODO delete token
-        router.openEntry()
+        deleteTokenUseCase()
+        router.openLogin()
     }
 }

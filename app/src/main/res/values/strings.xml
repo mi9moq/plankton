@@ -37,4 +37,5 @@
     <string name="wrong_email">wrong email</string>
     <string name="wrong_password">wrong password</string>
     <string name="user_not_found">wrong email or password</string>
+    <string name="no_account">Don\'t have an account?\ </string>
 </resources>

@@ -54,35 +54,13 @@
                 app:title="@string/app_name"
                 app:titleTextColor="@color/white" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/show_calendar"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="calendar"
-                app:layout_constraintEnd_toStartOf="@+id/show_list"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tool_bar" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/show_list"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/grey"
-                android:text="list"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/show_calendar"
-                app:layout_constraintTop_toBottomOf="@id/tool_bar" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/events_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/show_calendar"
+                app:layout_constraintTop_toBottomOf="@id/tool_bar"
                 tools:listitem="@layout/event_item" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -95,14 +73,6 @@
                 android:src="@drawable/ic_add"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
-
-            <CalendarView
-                android:id="@+id/calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/show_list" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

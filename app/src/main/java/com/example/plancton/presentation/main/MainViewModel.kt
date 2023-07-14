@@ -68,18 +68,13 @@ class MainViewModel @Inject constructor(
         router.openAddEvent()
     }
 
-    fun changeUser() {
+    fun reLogin() {
         deleteTokenUseCase()
-        router.openEntry()
+        router.openLogin()
     }
 
     fun editUser() {
         router.openEditUser()
-    }
-
-    fun reLogin() {
-        //TODO delete token
-        router.openEntry()
     }
 
     private fun getStartDate(timeInMillis: Long): LocalDate =
