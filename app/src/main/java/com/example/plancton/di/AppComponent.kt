@@ -6,7 +6,9 @@ import com.example.plancton.PlanctonApp
 import com.example.plancton.core.auth.AuthCoreModule
 import com.example.plancton.core.dagger.AppScope
 import com.example.plancton.core.token.TokenCoreModule
+import com.example.plancton.core.user.UserCoreModule
 import com.example.plancton.ui.activity.MainActivity
+import com.example.plancton.ui.fragment.EditUserDataFragment
 import com.example.plancton.ui.fragment.EntryFragment
 import com.example.plancton.ui.fragment.EventFragment
 import com.example.plancton.ui.fragment.LoginFragment
@@ -22,6 +24,7 @@ import dagger.Component
         AuthCoreModule::class,
         EventCoreModule::class,
         TokenCoreModule::class,
+        UserCoreModule::class,
     ]
 )
 @AppScope
@@ -40,6 +43,8 @@ interface AppComponent {
     fun inject(fragment: EntryFragment)
 
     fun inject(fragment: MainFragment)
+
+    fun inject(fragment: EditUserDataFragment)
 
     @Component.Factory
     interface Factory {
