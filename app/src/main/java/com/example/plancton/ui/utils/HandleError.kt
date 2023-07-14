@@ -3,7 +3,10 @@ package com.example.plancton.ui.utils
 import com.examlpe.plancton.core.event.domain.entity.EventErrorType
 import com.example.plancton.core.auth.domain.entity.AuthErrorType
 import com.example.plancton.core.user.domain.entity.UserErrorType
-import com.example.plancton.core.user.domain.entity.UserErrorType.*
+import com.example.plancton.core.user.domain.entity.UserErrorType.CONNECTION
+import com.example.plancton.core.user.domain.entity.UserErrorType.NOT_FOUND
+import com.example.plancton.core.user.domain.entity.UserErrorType.UNAUTHORIZED
+import com.example.plancton.core.user.domain.entity.UserErrorType.UNKNOWN
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -34,6 +37,7 @@ fun handleAuthError(throwable: Throwable): AuthErrorType =
         }
 
         else -> AuthErrorType.UNKNOWN
+    }
 
 fun handleUserError(throwable: Throwable): UserErrorType =
     when (throwable) {
