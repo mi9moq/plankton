@@ -15,6 +15,10 @@ import javax.inject.Inject
 
 class EntryFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = EntryFragment()
+    }
+
     private var _binding: FragmentEntryBinding? = null
     private val binding
         get() = _binding!!

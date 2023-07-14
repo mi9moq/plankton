@@ -6,12 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.plancton.R
-import com.example.plancton.databinding.FragmentCreateBinding
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.CONNECTION
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.NOT_FOUND
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.UNAUTHORIZED
+import com.examlpe.plancton.core.event.domain.entity.EventErrorType.UNKNOWN
 import com.examlpe.plancton.core.event.domain.entity.ReplayType
 import com.examlpe.plancton.core.event.domain.entity.UserEvent
+import com.example.plancton.R
+import com.example.plancton.databinding.FragmentCreateBinding
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.event.EventState
 import com.example.plancton.presentation.event.EventState.Content
@@ -20,6 +26,7 @@ import com.example.plancton.presentation.event.EventState.Initial
 import com.example.plancton.presentation.event.EventState.Loading
 import com.example.plancton.presentation.event.EventViewModel
 import com.example.plancton.ui.activity.MainActivity
+import com.example.plancton.ui.utils.showUnauthorizedDialog
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -104,7 +111,7 @@ class EventFragment : Fragment() {
             Initial -> Unit
             Loading -> applyLoadingState()
             is Content -> applyContentSate(state.userEvent)
-            is Error -> applyErrorState(state.message)
+            is Error -> applyErrorState(state.type)
         }
     }
 
@@ -135,20 +142,32 @@ class EventFragment : Fragment() {
 
     private fun applyLoadingState() {
         with(binding) {
-            contentContainer.visibility = View.GONE
-            progressBar.visibility = View.VISIBLE
+            progressBar.isVisible = true
+            contentContainer.isVisible = false
+            errorContainer.isVisible = false
         }
     }
 
     private fun applyContentSate(event: UserEvent) {
         with(binding) {
-            contentContainer.visibility = View.VISIBLE
-            progressBar.visibility = View.GONE
+            contentContainer.isVisible = true
+            progressBar.isVisible = false
+            errorContainer.isVisible = false
         }
     }
 
-    private fun applyErrorState(message: String) {
-        //TODO добавить обработку ошибок
+    private fun applyErrorState(type: EventErrorType) {
+        with(binding) {
+            errorContainer.isVisible = true
+            contentContainer.isVisible = false
+            progressBar.isVisible = false
+        }
+        when (type) {
+            UNAUTHORIZED -> showUnauthorizedDialog(viewModel::reLogin)
+            CONNECTION -> applyConnectionError()
+            NOT_FOUND -> Unit
+            UNKNOWN -> applyUnknownError()
+        }
     }
 
     private fun showTimePickerDialog() {
@@ -186,6 +205,24 @@ class EventFragment : Fragment() {
                 eventTime,
                 binding.etDescription.text.toString(),
             )
+        }
+    }
+
+    private fun applyConnectionError() {
+        with(binding) {
+            errorMessage.text = getString(R.string.connection_error_message)
+            errorButton.setOnClickListener {
+                viewModel.tryAgain()
+            }
+        }
+    }
+
+    private fun applyUnknownError() {
+        with(binding) {
+            errorMessage.text = getString(R.string.unknown_error_message)
+            errorButton.setOnClickListener {
+                viewModel.tryAgain()
+            }
         }
     }
 
