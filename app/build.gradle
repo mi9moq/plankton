@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.plancton"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -24,21 +25,51 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 }
 
 dependencies {
+    implementation project(":core:auth")
+    implementation project(":core:dagger")
+    implementation project(":core:event")
+    implementation project(":core:token")
+    implementation project(":core:user")
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    def dagger_version = "2.44.2"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    implementation "androidx.fragment:fragment:1.6.0"
+    //Lifecycle
+    def extensions_version = "2.2.0"
+    def ktx_version = "2.6.1"
+    implementation "androidx.lifecycle:lifecycle-extensions:$extensions_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$ktx_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$ktx_version"
+
+    //Navigation
+    def cicerone_version = "7.1"
+    implementation "com.github.terrakok:cicerone:$cicerone_version"
+
+    //Network
+    def retrofit_version = "2.9.0"
+    def interceptor_version = "4.11.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
 }

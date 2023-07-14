@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Планктон</string>
+    <string name="pick_date">выберите дату</string>
+    <string name="pick_time">выберите время</string>
+    <string name="enter_full_name">введите имя</string>
+    <string name="enter_email">введите email</string>
+    <string name="enter_password">введите пароль</string>
+    <string name="sign_in">войти</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="error_unknown">Что-то не так, скоро исправим</string>
+    <string name="choose_replay_type">Choose replay type</string>
+    <string name="single">SINGLE</string>
+    <string name="daily">DAILY</string>
+    <string name="weekly">WEEKLY</string>
+    <string name="monthly">MONTHLY</string>
+    <string name="yearly">YEARLY</string>
+    <string name="custom">CUSTOM</string>
+    <string name="apply">APPLY</string>
+    <string name="create">Create</string>
+    <string name="positive_button">Да</string>
+    <string name="negative_button">Нет</string>
+    <string name="delete_event_title">Удалить ивент</string>
+    <string name="delete_event_message">Вы действительно хотите удалить ивент?</string>
+    <string name="error_internet">Проверьте подключение к интернету</string>
+    <string name="error_entered_data">Проверить введенные данные</string>
+    <string name="error_invalid_data">Неверный адрес электронной почты или пароль</string>
+    <string name="editing_personal_data">Редактировать профиль</string>
+    <string name="change_user">Сменить пользователя</string>
+    <string name="save">сохранить</string>
+    <string name="try_again">попробовать еще раз</string>
+    <string name="authorisation_error">Ошибка авторизации</string>
+    <string name="authorisation_error_message">Вы не авторизованы, пожалуйста, войдите снова</string>
+    <string name="connection_error_message">Ошибка подключения, проверьте подключение к интернету</string>
+    <string name="unknown_error_message">Неизвестная ошибка</string>
+    <string name="wrong_email">неправильный адрес электронной почты</string>
+    <string name="wrong_password">некорректный пароль</string>
+    <string name="user_not_found">неверный адрес электронной почты или пароль</string>
+    <string name="no_account">Нет аккаунта?\ </string>
+</resources>
