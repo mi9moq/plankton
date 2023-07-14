@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.plancton.core.token.domain.usecase.DeleteTokenUseCase
 import com.example.plancton.core.token.domain.usecase.GetTokenUseCase
 import com.example.plancton.core.user.domain.entity.ChangeUserRequest
 import com.example.plancton.core.user.domain.usecase.ChangeUserUseCase
@@ -23,6 +24,7 @@ class UserViewModel @Inject constructor(
     private val getUserUseCase: GetUserUseCase,
     private val changeUserUseCase: ChangeUserUseCase,
     private val router: UserRouter,
+    private val deleteTokenUseCase: DeleteTokenUseCase,
 ) : ViewModel() {
 
     private val _state: MutableLiveData<UserState> = MutableLiveData(Initial)
@@ -54,5 +56,15 @@ class UserViewModel @Inject constructor(
             changeUserUseCase(token!!, ChangeUserRequest(fullName))
             router.backToMain()
         }
+    }
+
+    fun reLogin() {
+        deleteTokenUseCase()
+        router.openLogin()
+    }
+
+    fun tryAgain() {
+        _state.value = Loading
+        _state.value = Initial
     }
 }
