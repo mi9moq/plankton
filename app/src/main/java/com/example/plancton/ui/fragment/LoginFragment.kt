@@ -25,6 +25,7 @@ import com.example.plancton.presentation.login.LoginState.Error
 import com.example.plancton.presentation.login.LoginState.Initial
 import com.example.plancton.presentation.login.LoginState.Loading
 import com.example.plancton.presentation.login.LoginViewModel
+import com.example.plancton.ui.animation.shake
 import com.example.plancton.ui.utils.addTextWatcher
 import javax.inject.Inject
 
@@ -154,11 +155,17 @@ class LoginFragment : Fragment() {
     }
 
     private fun showWrongEmail() {
-        binding.tilEmail.error = getString(R.string.wrong_email)
+        binding.tilEmail.apply {
+            error = getString(R.string.wrong_email)
+            shake()
+        }
     }
 
     private fun showWrongPassword() {
-        binding.tilPassword.error = getString(R.string.wrong_password)
+        binding.tilPassword.apply {
+            error = getString(R.string.wrong_password)
+            shake()
+        }
     }
 
     private fun showUnknownError() {
