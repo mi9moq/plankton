@@ -83,12 +83,6 @@ class MainFragment : Fragment() {
             add.setOnClickListener {
                 viewModel.openAdd()
             }
-            showCalendar.setOnClickListener {
-                showEventsCalendar()
-            }
-            showList.setOnClickListener {
-                showEventsList()
-            }
             toolBar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.change_user -> {
@@ -104,20 +98,6 @@ class MainFragment : Fragment() {
                     else -> false
                 }
             }
-        }
-    }
-
-    private fun showEventsCalendar() {
-        with(binding) {
-            eventsList.visibility = View.GONE
-            calendar.visibility = View.VISIBLE
-        }
-    }
-
-    private fun showEventsList() {
-        with(binding) {
-            eventsList.visibility = View.VISIBLE
-            calendar.visibility = View.GONE
         }
     }
 
