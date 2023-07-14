@@ -1,6 +1,8 @@
 package com.example.plancton.di
 
 import com.example.plancton.core.dagger.AppScope
+import com.example.plancton.navigation.router.ActivityRouter
+import com.example.plancton.navigation.router.ActivityRouterImpl
 import com.example.plancton.navigation.router.EntryRouter
 import com.example.plancton.navigation.router.EntryRouterImpl
 import com.example.plancton.navigation.router.EventRouter
@@ -52,4 +54,8 @@ interface NavigationModule {
     @Binds
     @AppScope
     fun bindRegisterLogin(impl: RegisterRouterImpl): RegisterRouter
+
+    @Binds
+    @AppScope
+    fun bindActivityRouter(impl: ActivityRouterImpl): ActivityRouter
 }

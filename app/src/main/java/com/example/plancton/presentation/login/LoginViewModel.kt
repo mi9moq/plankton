@@ -70,4 +70,8 @@ class LoginViewModel @Inject constructor(
                 _state.value = Error(HTTP400)
         }
     }
+
+    fun openSignup() {
+        router.openSignup()
+    }
 }
