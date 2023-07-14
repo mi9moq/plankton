@@ -9,7 +9,6 @@ import com.example.plancton.core.token.TokenCoreModule
 import com.example.plancton.core.user.UserCoreModule
 import com.example.plancton.ui.activity.MainActivity
 import com.example.plancton.ui.fragment.EditUserDataFragment
-import com.example.plancton.ui.fragment.EntryFragment
 import com.example.plancton.ui.fragment.EventFragment
 import com.example.plancton.ui.fragment.LoginFragment
 import com.example.plancton.ui.fragment.MainFragment
@@ -39,8 +38,6 @@ interface AppComponent {
     fun inject(fragment: LoginFragment)
 
     fun inject(fragment: RegistrationFragment)
-
-    fun inject(fragment: EntryFragment)
 
     fun inject(fragment: MainFragment)
 

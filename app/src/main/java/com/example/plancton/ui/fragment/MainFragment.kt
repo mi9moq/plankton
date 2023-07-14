@@ -92,7 +92,7 @@ class MainFragment : Fragment() {
             toolBar.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.change_user -> {
-                        viewModel.changeUser()
+                        viewModel.reLogin()
                         true
                     }
 
