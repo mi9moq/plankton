@@ -3,8 +3,6 @@ package com.example.plancton.di
 import com.example.plancton.core.dagger.AppScope
 import com.example.plancton.navigation.router.ActivityRouter
 import com.example.plancton.navigation.router.ActivityRouterImpl
-import com.example.plancton.navigation.router.EntryRouter
-import com.example.plancton.navigation.router.EntryRouterImpl
 import com.example.plancton.navigation.router.EventRouter
 import com.example.plancton.navigation.router.EventRouterImpl
 import com.example.plancton.navigation.router.LoginRouter
@@ -36,10 +34,6 @@ interface NavigationModule {
         @AppScope
         fun provideNavigatorHolder(): NavigatorHolder = cicerone.getNavigatorHolder()
     }
-
-    @Binds
-    @AppScope
-    fun bindEntryRouter(impl: EntryRouterImpl): EntryRouter
 
     @Binds
     @AppScope
