@@ -13,6 +13,8 @@ import com.example.plancton.navigation.router.MainRouter
 import com.example.plancton.navigation.router.MainRouterImpl
 import com.example.plancton.navigation.router.RegisterRouter
 import com.example.plancton.navigation.router.RegisterRouterImpl
+import com.example.plancton.navigation.router.UserRouter
+import com.example.plancton.navigation.router.UserRouterImpl
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -58,4 +60,8 @@ interface NavigationModule {
     @Binds
     @AppScope
     fun bindActivityRouter(impl: ActivityRouterImpl): ActivityRouter
+
+    @Binds
+    @AppScope
+    fun bindUserRouter(impl: UserRouterImpl): UserRouter
 }
