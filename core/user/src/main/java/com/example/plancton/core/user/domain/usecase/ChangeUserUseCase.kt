@@ -8,7 +8,7 @@ class ChangeUserUseCase @Inject constructor(
     private val repository: UserRepository,
 ) {
 
-    suspend fun invoke(id: String, changeUserRequest: ChangeUserRequest) {
+    suspend operator fun invoke(id: String, changeUserRequest: ChangeUserRequest) {
         repository.change(id, changeUserRequest)
     }
 }
