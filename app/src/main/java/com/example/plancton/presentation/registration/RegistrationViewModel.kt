@@ -38,8 +38,7 @@ class RegistrationViewModel @Inject constructor(
                 val token = registerUseCase(registrationRequest)
                 setTokenUseCase(token)
                 router.openMain()
-            } //else
-//                _state.value = Error(HTTP400)
+            }
         }
     }
 }
