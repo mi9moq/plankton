@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.examlpe.plancton.core.event.domain.entity.EventRequest
-import com.examlpe.plancton.core.event.domain.entity.ReplayType
 import com.examlpe.plancton.core.event.domain.usecase.CreateSingleEventUseCase
 import com.example.plancton.core.token.domain.usecase.DeleteTokenUseCase
 import com.example.plancton.navigation.router.EventRouter
@@ -34,10 +33,6 @@ class EventViewModel @Inject constructor(
 
     private val _time: MutableLiveData<LocalTime?> = MutableLiveData(null)
     val time: LiveData<LocalTime?> = _time
-
-    private val _replayTypes: MutableLiveData<List<ReplayType>> =
-        MutableLiveData(ReplayType.values().toList())
-    val replayTypes: LiveData<List<ReplayType>> = _replayTypes
 
     private val handler = CoroutineExceptionHandler { _, throwable ->
         _state.value = EventState.Error(handleEventError(throwable))

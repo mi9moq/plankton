@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,8 +13,6 @@ import com.examlpe.plancton.core.event.domain.entity.EventErrorType.CONNECTION
 import com.examlpe.plancton.core.event.domain.entity.EventErrorType.NOT_FOUND
 import com.examlpe.plancton.core.event.domain.entity.EventErrorType.UNAUTHORIZED
 import com.examlpe.plancton.core.event.domain.entity.EventErrorType.UNKNOWN
-import com.examlpe.plancton.core.event.domain.entity.ReplayType
-import com.examlpe.plancton.core.event.domain.entity.UserEvent
 import com.example.plancton.R
 import com.example.plancton.databinding.FragmentCreateBinding
 import com.example.plancton.presentation.ViewModelFactory
@@ -103,14 +100,13 @@ class EventFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner, ::applyState)
         viewModel.date.observe(viewLifecycleOwner, ::setDate)
         viewModel.time.observe(viewLifecycleOwner, ::setTime)
-        viewModel.replayTypes.observe(viewLifecycleOwner, ::setupReplayTypes)
     }
 
     private fun applyState(state: EventState) {
         when (state) {
             Initial -> Unit
             Loading -> applyLoadingState()
-            is Content -> applyContentSate(state.userEvent)
+            is Content -> applyContentSate()
             is Error -> applyErrorState(state.type)
         }
     }
@@ -135,11 +131,6 @@ class EventFragment : Fragment() {
         }
     }
 
-    private fun setupReplayTypes(replayTypes: List<ReplayType>) {
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, replayTypes)
-        binding.dropdownMenu.adapter = arrayAdapter
-    }
-
     private fun applyLoadingState() {
         with(binding) {
             progressBar.isVisible = true
@@ -148,7 +139,7 @@ class EventFragment : Fragment() {
         }
     }
 
-    private fun applyContentSate(event: UserEvent) {
+    private fun applyContentSate() {
         with(binding) {
             contentContainer.isVisible = true
             progressBar.isVisible = false

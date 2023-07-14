@@ -8,6 +8,10 @@ import com.examlpe.plancton.core.event.domain.usecase.DeleteEventUseCase
 import com.examlpe.plancton.core.event.domain.usecase.GetEventsUseCase
 import com.example.plancton.core.token.domain.usecase.DeleteTokenUseCase
 import com.example.plancton.navigation.router.MainRouter
+import com.example.plancton.presentation.main.MainState.Content
+import com.example.plancton.presentation.main.MainState.Error
+import com.example.plancton.presentation.main.MainState.Initial
+import com.example.plancton.presentation.main.MainState.Loading
 import com.example.plancton.ui.utils.handleEventError
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -28,11 +32,11 @@ class MainViewModel @Inject constructor(
         private const val YEAR_MILLIS = 24 * 60 * 60 * 1000 * 365L
     }
 
-    private val _state: MutableLiveData<MainState> = MutableLiveData(MainState.Initial)
+    private val _state: MutableLiveData<MainState> = MutableLiveData(Initial)
     val state: LiveData<MainState> = _state
 
     private val handler = CoroutineExceptionHandler { _, throwable ->
-        _state.value = MainState.Error(handleEventError(throwable))
+        _state.value = Error(handleEventError(throwable))
     }
 
     init {
@@ -48,8 +52,8 @@ class MainViewModel @Inject constructor(
             set(Calendar.MILLISECOND, 0)
         }
         viewModelScope.launch(handler) {
-            _state.value = MainState.Loading
-            _state.value = MainState.Content(
+            _state.value = Loading
+            _state.value = Content(
                 getEventsUseCase(
                     getStartDate(calendar.timeInMillis),
                     getEndDate(calendar.timeInMillis)
@@ -61,6 +65,7 @@ class MainViewModel @Inject constructor(
     fun deleteEvent(id: String) {
         viewModelScope.launch {
             deleteEventUseCase(id)
+            loadEvents()
         }
     }
 

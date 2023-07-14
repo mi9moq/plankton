@@ -120,24 +120,26 @@
             app:layout_constraintTop_toBottomOf="@id/date"
             tools:text="@tools:sample/date/hhmm" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/is_public"
+        <TextView
+            android:id="@+id/title_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="is public"
-            app:layout_constraintEnd_toStartOf="@id/right_guideline"
-            app:layout_constraintStart_toEndOf="@id/left_guideline"
+            android:gravity="start"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/right_guideline"
+            app:layout_constraintStart_toStartOf="@id/left_guideline"
             app:layout_constraintTop_toBottomOf="@id/time_pick" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toStartOf="@id/right_guideline"
             app:layout_constraintStart_toEndOf="@id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@id/is_public">
+            app:layout_constraintTop_toBottomOf="@id/title_description">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_description"
@@ -146,32 +148,12 @@
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/title_choose_replay_type"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_40"
-            android:gravity="center"
-            android:text="@string/choose_replay_type"
-            app:layout_constraintEnd_toStartOf="@id/right_guideline"
-            app:layout_constraintStart_toEndOf="@id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@id/til_description" />
-
-        <!-- TODO мб переделать на TextInputLayout expose dropdown menu-->
-        <Spinner
-            android:id="@+id/dropdown_menu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_20"
-            app:layout_constraintEnd_toStartOf="@id/right_guideline"
-            app:layout_constraintStart_toEndOf="@id/left_guideline"
-            app:layout_constraintTop_toBottomOf="@id/title_choose_replay_type" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/create"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/create"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toTopOf="@id/bottom_guideline"
             app:layout_constraintEnd_toStartOf="@id/right_guideline"
             app:layout_constraintStart_toEndOf="@id/left_guideline" />
