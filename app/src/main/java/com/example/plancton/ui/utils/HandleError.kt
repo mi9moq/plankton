@@ -1,6 +1,7 @@
 package com.example.plancton.ui.utils
 
 import com.examlpe.plancton.core.event.domain.entity.EventErrorType
+import com.example.plancton.core.auth.domain.entity.AuthErrorType
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -18,4 +19,17 @@ fun handleEventError(throwable: Throwable): EventErrorType =
         }
 
         else -> EventErrorType.UNKNOWN
+    }
+
+fun handleAuthError(throwable: Throwable): AuthErrorType =
+    when (throwable) {
+        is UnknownHostException, is SocketTimeoutException, is ConnectException -> AuthErrorType.CONNECTION
+        is HttpException -> {
+            when (throwable.code()) {
+                401 -> AuthErrorType.USER_NOT_FOUND
+                else -> AuthErrorType.UNKNOWN
+            }
+        }
+
+        else -> AuthErrorType.UNKNOWN
     }

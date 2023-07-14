@@ -34,4 +34,7 @@
     <string name="connection_error_message">Connection error, please check your internet connection</string>
     <string name="unknown_error_message">Unknown error</string>
     <string name="no_account">Don\'t have an account? </string>
+    <string name="wrong_email">wrong email</string>
+    <string name="wrong_password">wrong password</string>
+    <string name="user_not_found">wrong email or password</string>
 </resources>

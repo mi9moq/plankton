@@ -12,24 +12,25 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.plancton.PlanctonApp
 import com.example.plancton.R
-import com.example.plancton.databinding.FragmentLoginBinding
-import com.example.plancton.core.auth.domain.entity.Auth
 import com.example.plancton.core.auth.domain.entity.AuthErrorType
-import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP400
-import com.example.plancton.core.auth.domain.entity.AuthErrorType.HTTP401
-import com.example.plancton.core.auth.domain.entity.AuthErrorType.INTERNET
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.CONNECTION
 import com.example.plancton.core.auth.domain.entity.AuthErrorType.UNKNOWN
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.USER_NOT_FOUND
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.WRONG_EMAIL
+import com.example.plancton.core.auth.domain.entity.AuthErrorType.WRONG_PASSWORD
+import com.example.plancton.databinding.FragmentLoginBinding
 import com.example.plancton.presentation.ViewModelFactory
 import com.example.plancton.presentation.login.LoginState
 import com.example.plancton.presentation.login.LoginState.Error
 import com.example.plancton.presentation.login.LoginState.Initial
 import com.example.plancton.presentation.login.LoginState.Loading
 import com.example.plancton.presentation.login.LoginViewModel
+import com.example.plancton.ui.utils.addTextWatcher
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
 
-    companion object{
+    companion object {
         fun newInstance() = LoginFragment()
     }
 
@@ -65,6 +66,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        addTextChangeListener()
+
         initListeners()
 
         initObservers()
@@ -73,9 +76,7 @@ class LoginFragment : Fragment() {
     private fun initListeners() {
         with(binding) {
             bSignIn.setOnClickListener {
-                val auth = getAuth()
-
-                viewModel.login(auth)
+                viewModel.login(etEmail.text.toString(), etPassword.text.toString())
             }
             signUp.setOnClickListener {
                 viewModel.openSignup()
@@ -83,25 +84,31 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun getAuth(): Auth =
-        with(binding) {
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
-
-            return Auth(email, password)
-        }
-
     private fun initObservers() {
         viewModel.state.observe(viewLifecycleOwner, ::applyState)
     }
 
+    private fun addTextChangeListener() {
+        with(binding) {
+            etEmail.addTextChangedListener(addTextWatcher(viewModel::resetError))
+            etPassword.addTextChangedListener(addTextWatcher(viewModel::resetError))
+        }
+    }
+
     private fun applyState(state: LoginState) {
         when (state) {
-            Initial -> Unit
+            Initial -> applyInitialState()
 
             is Loading -> applyLoadingState()
 
             is Error -> applyErrorState(state.authErrorType)
+        }
+    }
+
+    private fun applyInitialState() {
+        with(binding) {
+            tilEmail.error = null
+            tilPassword.error = null
         }
     }
 
@@ -116,7 +123,6 @@ class LoginFragment : Fragment() {
 
     private fun applyErrorState(authErrorType: AuthErrorType) {
 
-        //TODO убрать фокус с полей ввода на всех фрагментах где они есть при переходе между стейтами
         with(binding) {
             contentContainer.isVisible = true
             tvError.isVisible = true
@@ -125,35 +131,34 @@ class LoginFragment : Fragment() {
         }
 
         when (authErrorType) {
-            INTERNET -> showInternetError()
+            CONNECTION -> showInternetError()
 
-            //TODO другие названия функций для 400 и 401
-            HTTP400 -> showEnteredDataError()
-
-            HTTP401 -> showInvalidDataError()
+            USER_NOT_FOUND -> showUserNotFound()
 
             UNKNOWN -> showUnknownError()
+            WRONG_EMAIL -> showWrongEmail()
+            WRONG_PASSWORD -> showWrongPassword()
         }
     }
 
     private fun showInternetError() {
         with(binding) {
-            //TODO добавить картинку
-            //TODO добавить анимации
             tvError.text = getString(R.string.error_internet)
         }
     }
 
-    private fun showEnteredDataError() {
+    private fun showUserNotFound() {
         with(binding) {
-            tvError.text = getString(R.string.error_entered_data)
+            tilEmail.error = getString(R.string.user_not_found)
         }
     }
 
-    private fun showInvalidDataError() {
-        with(binding) {
-            tvError.text = getString(R.string.error_invalid_data)
-        }
+    private fun showWrongEmail() {
+        binding.tilEmail.error = getString(R.string.wrong_email)
+    }
+
+    private fun showWrongPassword() {
+        binding.tilPassword.error = getString(R.string.wrong_password)
     }
 
     private fun showUnknownError() {
