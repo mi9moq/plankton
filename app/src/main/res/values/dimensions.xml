@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_40">40dp</dimen>
     <dimen name="padding_16">16dp</dimen>
 </resources>
