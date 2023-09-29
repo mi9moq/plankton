@@ -1,8 +1,6 @@
 # Plankton
 
-# LoanS
-
-**Проект в рамках ШИФТ курсов по направлению "Android"**
+**Проект в рамках ШИФТ интенсива**
 
 [*Видео работы приложения №1*](https://drive.google.com/file/d/1m4Bgvw_e6rouLhYiAFvzywfNped0jRc_/view?usp=sharing](https://drive.google.com/file/d/1TvZy_tZf4kgZNKEE931l_KWId2KKm-_f/view?usp=sharing)
 [*Видео работы приложения №2*](https://drive.google.com/file/d/1m4Bgvw_e6rouLhYiAFvzywfNped0jRc_/view?usp=sharing](https://drive.google.com/file/d/1TvZy_tZf4kgZNKEE931l_KWId2KKm-_f/view?usp=sharing](https://drive.google.com/file/d/1HstCaahljgsaccRYhNAvuxBtgUmV9mdX/view?usp=sharing)
