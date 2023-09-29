@@ -1,6 +1,6 @@
 # Plankton
 
-**Проект в рамках ШИФТ интенсива**
+**Проект, разработанный в команде, в рамках ШИФТ интенсива**
 
 [*Видео работы приложения №1*](https://drive.google.com/file/d/1TvZy_tZf4kgZNKEE931l_KWId2KKm-_f/view?usp=sharing)
 
