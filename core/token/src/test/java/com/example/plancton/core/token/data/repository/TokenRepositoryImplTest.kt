@@ -21,4 +21,12 @@ class TokenRepositoryImplTest {
 
         verify(dataSource).delete()
     }
+
+    @Test
+    fun `set EXPECT set token`() {
+
+        repository.set(token)
+
+        verify(dataSource).set(token)
+    }
 }
