@@ -29,4 +29,15 @@ class TokenRepositoryImplTest {
 
         verify(dataSource).set(token)
     }
+
+    @Test
+    fun `get EXPECT token`() {
+
+        whenever(dataSource.get()) doReturn token
+
+        val expect = token
+        val actual = repository.get()
+
+        assertEquals(expect, actual)
+    }
 }
